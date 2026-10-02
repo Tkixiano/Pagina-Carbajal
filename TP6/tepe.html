@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa Conceptual TCP</title>
+</head>
+
+<body bgcolor="white" text="black">
+
+<center>
+
+<!-- TÍTULO -->
+<table border="3" cellpadding="12" cellspacing="0" width="45%">
+    <tr>
+        <td align="center">
+            <font size="7"><b>TCP</b></font><br>
+            <font size="5"><b>Protocolo de Control de Transmisión</b></font>
+        </td>
+    </tr>
+</table>
+
+<br>
+<b>│</b><br>
+<b>es</b><br>
+<b>│</b>
+<br><br>
+
+<!-- DEFINICIÓN -->
+<table border="2" cellpadding="10" cellspacing="0" width="45%">
+    <tr>
+        <td align="center">
+            <font size="4">
+                Protocolo de capa de transporte del conjunto TCP/IP
+                utilizado para garantizar una comunicación fiable
+                entre aplicaciones a través de una red.
+            </font>
+        </td>
+    </tr>
+</table>
+
+<br>
+<b>│</b><br>
+<b>▼</b>
+<br><br>
+
+<!-- PAQUETES TCP -->
+<table border="2" cellpadding="10" cellspacing="0" width="30%">
+    <tr>
+        <td align="center">
+            <font size="5"><b>PAQUETES TCP</b></font><br>
+            También llamados <b>segmentos</b>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<b>contienen</b><br>
+<b>┌──────────────┴──────────────┐</b>
+
+<br><br>
+
+<table border="0" cellpadding="10" cellspacing="15" width="60%">
+    <tr>
+
+        <td width="50%" valign="top">
+            <table border="2" cellpadding="10" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center">
+                        <font size="4"><b>ENCABEZADO</b></font>
+                        <hr color="black">
+                        Información de control como puertos,
+                        números de secuencia, banderas y otros datos.
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+        <td width="50%" valign="top">
+            <table border="2" cellpadding="10" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center">
+                        <font size="4"><b>CARGA ÚTIL</b></font>
+                        <hr color="black">
+                        Es el fragmento real de datos
+                        que se transmite por la red.
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+    </tr>
+</table>
+
+<br><br>
+
+<b>│</b><br>
+<b>▼</b>
+
+<br><br>
+
+<!-- FUNCIONES -->
+<table border="2" cellpadding="12" cellspacing="0" width="65%">
+    <tr>
+        <td align="center">
+            <font size="5"><b>PRINCIPALES FUNCIONES DE TCP</b></font>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <ul>
+                <li>Transferencia fiable de datos.</li>
+                <li>Comprobación de errores.</li>
+                <li>Control de flujo.</li>
+                <li>Control de congestión.</li>
+                <li>Establecimiento de la conexión.</li>
+                <li>Finalización de la conexión.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<br><br>
+
+<b>│</b><br>
+<b>▼</b>
+
+<br><br>
+
+<!-- PROCESO TCP -->
+<table border="0" cellpadding="8" cellspacing="10" width="95%">
+<tr>
+
+<!-- ESTABLECIMIENTO -->
+<td width="33%" valign="top">
+
+    <table border="2" cellpadding="10" cellspacing="0" width="100%">
+
+        <tr>
+            <td align="center">
+                <font size="5">
+                    <b>ESTABLECIMIENTO<br>DE CONEXIÓN</b>
+                </font>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center">
+
+                TCP utiliza un protocolo de enlace
+                de <b>tres vías</b>.
+
+                <br><br>
+
+                <b>CLIENTE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SERVIDOR</b>
+
+                <br><br>
+
+                <b>1. SYN</b><br>
+                Solicita conexión<br>
+                ───────────────────►
+
+                <br><br>
+
+                <b>2. SYN-ACK</b><br>
+                Acepta la conexión<br>
+                ◄───────────────────
+
+                <br><br>
+
+                <b>3. ACK</b><br>
+                Confirma la conexión<br>
+                ───────────────────►
+
+                <br><br>
+
+                <b>CONEXIÓN ESTABLECIDA</b>
+
+            </td>
+        </tr>
+
+    </table>
+
+</td>
+
+
+<!-- TRANSFERENCIA -->
+<td width="33%" valign="top">
+
+    <table border="2" cellpadding="10" cellspacing="0" width="100%">
+
+        <tr>
+            <td align="center">
+                <font size="5">
+                    <b>TRANSFERENCIA<br>DE DATOS</b>
+                </font>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center">
+
+                Los datos se dividen en segmentos
+                más pequeños.
+
+                <br><br>
+
+                <table border="2" cellpadding="7" cellspacing="0">
+                    <tr>
+                        <td>Segmento 1</td>
+                    </tr>
+                    <tr>
+                        <td>Segmento 2</td>
+                    </tr>
+                    <tr>
+                        <td>Segmento 3</td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <b>▼</b>
+
+                <br><br>
+
+                Se transmiten por la red y
+                posteriormente se reensamblan
+                en el destino.
+
+                <br><br>
+
+                Los <b>ACK</b> confirman
+                la recepción correcta de los datos.
+
+            </td>
+        </tr>
+
+    </table>
+
+</td>
+
+
+<!-- FINALIZACIÓN -->
+<td width="33%" valign="top">
+
+    <table border="2" cellpadding="10" cellspacing="0" width="100%">
+
+        <tr>
+            <td align="center">
+                <font size="5">
+                    <b>FINALIZACIÓN<br>DE LA CONEXIÓN</b>
+                </font>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center">
+
+                TCP utiliza un protocolo
+                de enlace de <b>cuatro vías</b>.
+
+                <br><br>
+
+                <b>CLIENTE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SERVIDOR</b>
+
+                <br><br>
+
+                <b>1. FIN</b><br>
+                ───────────────────►
+
+                <br><br>
+
+                <b>2. ACK</b><br>
+                ◄───────────────────
+
+                <br><br>
+
+                <b>3. FIN</b><br>
+                ◄───────────────────
+
+                <br><br>
+
+                <b>4. ACK</b><br>
+                ───────────────────►
+
+                <br><br>
+
+                <b>CONEXIÓN CERRADA</b>
+
+            </td>
+        </tr>
+
+    </table>
+
+</td>
+
+</tr>
+</table>
+
+
+<br><br>
+
+<b>│</b><br>
+<b>▼</b>
+
+<br><br>
+
+
+<!-- ENCABEZADO TCP -->
+<table border="3" cellpadding="8" cellspacing="0" width="75%">
+
+    <tr>
+        <td colspan="4" align="center">
+            <font size="5"><b>ENCABEZADO TCP</b></font><br><br>
+            Contiene la información de control necesaria
+            para el funcionamiento de TCP.
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center">
+            <b>Puerto de origen</b><br>
+            16 bits
+        </td>
+
+        <td colspan="2" align="center">
+            <b>Puerto de destino</b><br>
+            16 bits
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="center">
+            <b>Número de secuencia</b><br>
+            32 bits
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="center">
+            <b>Número de acuse de recibo</b><br>
+            32 bits
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+            <b>Longitud del encabezado</b>
+        </td>
+
+        <td align="center">
+            <b>Reservado</b>
+        </td>
+
+        <td align="center">
+            <b>Banderas</b>
+        </td>
+
+        <td align="center">
+            <b>Tamaño de ventana</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center">
+            <b>Suma de comprobación</b>
+        </td>
+
+        <td colspan="2" align="center">
+            <b>Puntero urgente</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center">
+            <b>Opciones</b>
+        </td>
+
+        <td colspan="2" align="center">
+            <b>Relleno</b>
+        </td>
+    </tr>
+
+</table>
+
+
+<br><br>
+
+<!-- BANDERAS -->
+<table border="2" cellpadding="10" cellspacing="0" width="60%">
+
+    <tr>
+        <td colspan="6" align="center">
+            <font size="5"><b>BANDERAS TCP</b></font>
+        </td>
+    </tr>
+
+    <tr align="center">
+        <td><b>SYN</b><br>Inicia conexión</td>
+        <td><b>ACK</b><br>Confirma datos</td>
+        <td><b>FIN</b><br>Finaliza transmisión</td>
+        <td><b>RST</b><br>Restablece conexión</td>
+        <td><b>PSH</b><br>Envía datos</td>
+        <td><b>URG</b><br>Datos urgentes</td>
+    </tr>
+
+</table>
+
+
+<br><br>
+
+<b>│</b><br>
+<b>▼</b>
+
+<br><br>
+
+
+<!-- FIABILIDAD -->
+<table border="2" cellpadding="10" cellspacing="0" width="65%">
+
+    <tr>
+        <td colspan="3" align="center">
+            <font size="5">
+                <b>¿CÓMO GARANTIZA TCP UNA CONEXIÓN FIABLE?</b>
+            </font>
+        </td>
+    </tr>
+
+    <tr>
+
+        <td width="33%" align="center">
+            <b>ACUSES DE RECIBO</b>
+            <br><br>
+            Confirman que los datos
+            fueron recibidos correctamente.
+            Si un paquete se pierde,
+            TCP puede retransmitirlo.
+        </td>
+
+        <td width="33%" align="center">
+            <b>CONTROL DE FLUJO</b>
+            <br><br>
+            Evita que el remitente
+            envíe más información de la
+            que el receptor puede manejar.
+        </td>
+
+        <td width="33%" align="center">
+            <b>CONTROL DE CONGESTIÓN</b>
+            <br><br>
+            TCP ajusta la velocidad
+            de transmisión según las
+            condiciones de la red.
+        </td>
+
+    </tr>
+
+</table>
+
+
+<br><br>
+
+<b>│</b><br>
+<b>▼</b>
+
+<br><br>
+
+
+<!-- PUERTOS -->
+<table border="2" cellpadding="10" cellspacing="0" width="75%">
+
+    <tr>
+        <td colspan="3" align="center">
+            <font size="5"><b>PUERTOS</b></font>
+            <br><br>
+            Los números de puerto identifican
+            procesos o servicios específicos dentro de un dispositivo.
+        </td>
+    </tr>
+
+    <tr align="center">
+
+        <td>
+            <b>PUERTOS CONOCIDOS</b>
+            <br><br>
+            0 - 1023
+            <br><br>
+            HTTP: 80<br>
+            HTTPS: 443<br>
+            FTP: 21<br>
+            SSH: 22
+        </td>
+
+        <td>
+            <b>PUERTOS REGISTRADOS</b>
+            <br><br>
+            1024 - 49151
+            <br><br>
+            Utilizados por aplicaciones
+            y servicios específicos.
+        </td>
+
+        <td>
+            <b>PUERTOS DINÁMICOS</b>
+            <br><br>
+            49152 - 65535
+            <br><br>
+            Utilizados normalmente
+            para conexiones temporales.
+        </td>
+
+    </tr>
+
+</table>
+
+
+<br><br>
+
+</center>
+
+</body>
+</html>
