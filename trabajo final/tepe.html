@@ -43,13 +43,13 @@
                 <caption>Distribución de empleados y puestos</caption>
                 <thead><tr><th>Planta</th><th>Sector</th><th>Horario</th><th>Empleados</th><th>Computadoras</th></tr></thead>
                 <tbody>
-                    <tr><td>Planta baja</td><td>Dispositivos</td><td>9:00 a 17:00</td><td>3</td><td>3</td></tr>
+                    <tr><td>Planta baja</td><td>Dispositivos</td><td>9:00 a 17:00</td><td>3</td><td>1 compartida</td></tr>
                     <tr><td>Primer piso</td><td>Diseño gráfico (Photoshop)</td><td>9:00 a 15:00</td><td>5</td><td>5</td></tr>
                     <tr><td>Primer piso</td><td>Diseño gráfico (Photoshop)</td><td>15:00 a 21:00</td><td>3</td><td>Las mismas 5</td></tr>
                     <tr><td>Segundo piso</td><td>Administración</td><td>9:00 a 17:00</td><td>3</td><td>3</td></tr>
                 </tbody>
             </table></div>
-            <p>La empresa tiene <strong>14 empleados, 11 computadoras, 3 plantas y 3 sectores</strong>. No hacen falta 14 computadoras: los tres empleados del segundo turno de Diseño utilizan las mismas cinco computadoras del primer turno, sin superposición horaria.</p>
+            <p>La empresa tiene <strong>14 empleados, 9 computadoras, 3 plantas y 3 sectores</strong>. La planta baja tendrá una computadora compartida por sus tres empleados, con uso alternado y cuentas individuales. Los tres empleados del segundo turno de Diseño utilizarán las mismas cinco computadoras del primer turno, sin superposición horaria.</p>
             <p>Cada empleado tendrá su propia cuenta de usuario, aunque comparta una computadora. Así se mantienen separados sus archivos y configuraciones personales. Los documentos compartidos se guardarán en carpetas del equipo de archivos con permisos por sector.</p>
         </section>
         <section id="topologia">
@@ -81,7 +81,7 @@
                     <tr><td>Árbol</td><td>Organización jerárquica, separación de grupos y facilidad de crecimiento.</td><td>Las fallas en niveles superiores pueden aislar ramas completas; requiere planificar la jerarquía.</td></tr>
                 </tbody>
             </table></div>
-            <p>La estrella extendida es adecuada porque permite conectar las tres plantas con enlaces claros y concentrar la administración en el rack. Su costo y mantenimiento son razonables para once puestos, sin la complejidad de una malla. Puede considerarse una estructura jerárquica similar a un árbol; ambas descripciones comparten características y no son categorías totalmente independientes.</p>
+            <p>La estrella extendida es adecuada porque permite conectar las tres plantas con enlaces claros y concentrar la administración en el rack. Su costo y mantenimiento son razonables para nueve puestos, sin la complejidad de una malla. Puede considerarse una estructura jerárquica similar a un árbol; ambas descripciones comparten características y no son categorías totalmente independientes.</p>
         </section>
         <section id="esquema">
             <h2>5. Esquema de la red</h2>
@@ -91,10 +91,10 @@
                 <div class="equipo">Router / firewall MikroTik</div>
                 <p>↕ Ethernet</p>
                 <div class="equipo">Switch central administrable de 8 puertos (TP-Link TL-SG108PE)</div>
-                <p>Equipo de archivos: una de las 3 PC de PB, conectada al switch PB</p>
+                <p>Equipo de archivos: la PC compartida de PB, conectada al switch PB</p>
                 <p>Desde el switch central sale un enlace independiente hacia cada switch de planta:</p>
                 <div class="ramas">
-                    <div class="rama"><div class="equipo">Switch PB</div><p>↕</p><p>3 PC de Dispositivos<br>1 punto de acceso Wi-Fi</p></div>
+                    <div class="rama"><div class="equipo">Switch PB</div><p>↕</p><p>1 PC compartida de Dispositivos<br>1 punto de acceso Wi-Fi</p></div>
                     <div class="rama"><div class="equipo">Switch P1</div><p>↕</p><p>5 PC de Diseño<br>1 punto de acceso Wi-Fi</p></div>
                     <div class="rama"><div class="equipo">Switch P2</div><p>↕</p><p>3 PC de Administración<br>1 punto de acceso Wi-Fi<br>1 impresora multifunción</p></div>
                 </div>
@@ -104,26 +104,26 @@
         <section id="distribucion">
             <h2>6. Distribución física de los dispositivos</h2>
             <h3>Planta baja: Dispositivos y rack principal</h3>
-            <p>Se instalarán tres PC Athlon 3000G con 8 GB de RAM, SSD de 240 GB, monitor Solarmax Full HD de 21,5 pulgadas, teclado y mouse. Una de estas tres computadoras también alojará las carpetas compartidas, con permisos individuales, y permanecerá encendida hasta completar los backups.</p>
+            <p>Se instalará una PC Athlon 3000G con 8 GB de RAM, SSD de 240 GB, monitor Solarmax Full HD de 21,5 pulgadas, teclado y mouse. Los tres empleados de planta baja compartirán esta computadora mediante cuentas individuales y uso alternado. También alojará las carpetas compartidas, con permisos individuales, y permanecerá encendida hasta completar los backups.</p>
             <p>Habrá un switch TP-Link TL-SG108E de ocho puertos Gigabit y un AP TP-Link TL-WA801ND. El rack GLC de 12U alojará el router MikroTik hEX S (2025), el switch central TL-SG108PE y los patch panels. La UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V, protegerá el equipo de archivos y los equipos centrales, con la distribución eléctrica dimensionada por el instalador. El disco externo Toshiba de 1 TB se conectará al equipo de archivos para las copias.</p>
-            <p>El rack estará en un lugar protegido, ventilado y con acceso restringido, cerca del ingreso de Internet. La UPS permite afrontar cortes breves y un apagado ordenado; no se dimensiona para alimentar las once PC.</p>
+            <p>El rack estará en un lugar protegido, ventilado y con acceso restringido, cerca del ingreso de Internet. La UPS permite afrontar cortes breves y un apagado ordenado; no se dimensiona para alimentar las nueve PC.</p>
             <h3>Primer piso: Diseño gráfico</h3>
             <p>Se instalarán cinco PC con <strong>Ryzen 5 3400G, 8 GB de RAM y SSD de 240 GB, sin tarjeta gráfica dedicada</strong>, con gráficos Radeon integrados, teclado y mouse. Cada puesto tendrá un monitor Solarmax Full HD de 21,5 pulgadas. Se instalarán un switch TL-SG108E y un AP TL-WA801ND.</p>
             <h3>Segundo piso: Administración</h3>
             <p>Se instalarán tres PC Athlon 3000G de 8 GB y SSD de 240 GB con gráficos integrados, monitor, teclado y mouse; un switch TL-SG108E, un AP TL-WA801ND y una impresora HP DeskJet Ink Advantage 2875 Wi-Fi usada.</p>
             <h3>Cableado y alimentación</h3>
-            <p>Las once PC y los enlaces entre switches usarán UTP Cat5e de cobre, apto para Gigabit Ethernet hasta 100 metros por canal, incluidos los patch cords. Las tomas, patch panels y patch cords Cat6 son compatibles, pero la categoría del conjunto queda limitada por el Cat5e.</p>
+            <p>Las nueve PC y los enlaces entre switches usarán UTP Cat5e de cobre, apto para Gigabit Ethernet hasta 100 metros por canal, incluidos los patch cords. Las tomas, patch panels y patch cords Cat6 son compatibles, pero la categoría del conjunto queda limitada por el Cat5e.</p>
             <p>Las canaletas protegerán el cableado, separado del tendido eléctrico. Los AP se ubicarán en posiciones centrales y elevadas. El Wi-Fi N300 tiene un puerto Ethernet de 100 Mbps; los puestos cableados conservarán enlaces Gigabit. Los AP usarán sus fuentes e inyectores PoE pasivos correspondientes.</p>
-            <p>Ocupación de puertos: PB, 5 (3 PC, AP y enlace); P1, 7 (5 PC, AP y enlace); P2, 5 (3 PC, AP y enlace), con impresora por Wi-Fi. El central usará 4 puertos: router y tres enlaces de planta. El router se alimentará por un puerto PoE compatible del switch central. Los switches TL-SG108E y TL-SG108PE permiten configurar VLAN; se verificará la versión exacta antes de comprar.</p>
+            <p>Ocupación de puertos: PB, 3 (1 PC, AP y enlace); P1, 7 (5 PC, AP y enlace); P2, 5 (3 PC, AP y enlace), con impresora por Wi-Fi. El central usará 4 puertos: router y tres enlaces de planta. El router se alimentará por un puerto PoE compatible del switch central. Los switches TL-SG108E y TL-SG108PE permiten configurar VLAN; se verificará la versión exacta antes de comprar.</p>
         </section>
         <section id="componentes">
             <h2>7. Componentes y dispositivos necesarios</h2>
             <div class="tabla"><table>
                 <thead><tr><th>Componente</th><th>Cantidad</th></tr></thead>
                 <tbody>
-                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>6</td></tr>
+                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>4</td></tr>
                     <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td></tr>
-                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>11</td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>9</td></tr>
                     <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td></tr>
                     <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td></tr>
                     <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td></tr>
@@ -142,7 +142,7 @@
             </table></div>
             <h3>Función de los componentes</h3>
             <ul>
-                <li><strong>PC y monitores:</strong> permiten trabajar; los Ryzen 5 se destinan al diseño básico y los Athlon a tareas de oficina. Los once equipos incluyen teclado y mouse.</li>
+                <li><strong>PC y monitores:</strong> permiten trabajar; los Ryzen 5 se destinan al diseño básico y los Athlon a tareas de oficina. Los nueve equipos incluyen teclado y mouse.</li>
                 <li><strong>Router:</strong> conecta con Internet, administra las subredes y aplica el firewall.</li>
                 <li><strong>Switches:</strong> el central une las plantas y los secundarios conectan los puestos de cada piso.</li>
                 <li><strong>Puntos de acceso:</strong> conectan móviles y separan las redes inalámbricas mediante SSID y VLAN compatibles.</li>
@@ -187,9 +187,9 @@
             <div class="tabla"><table>
                 <thead><tr><th>Componente</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th><th>Fuente</th></tr></thead>
                 <tbody>
-                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>6</td><td class="numero">$397.999,00</td><td class="numero">$2.387.994,00</td><td><a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>4</td><td class="numero">$397.999,00</td><td class="numero">$1.591.996,00</td><td><a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td><td class="numero">$523.990,00</td><td class="numero">$2.619.950,00</td><td><a href="https://www.mercadolibre.com.ar/pc-ryzen-5-completa-3400g-8-gb-240-gb-wi-fi-mouse-y-teclado-aconcawa-pc/p/MLA78236679" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
-                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>11</td><td class="numero">$98.900,00</td><td class="numero">$1.087.900,00</td><td><a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>9</td><td class="numero">$98.900,00</td><td class="numero">$890.100,00</td><td><a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td><td class="numero">$127.700,00</td><td class="numero">$127.700,00</td><td><a href="https://www.mercadolibre.com.ar/mikrotik-router-hex-s-2025-e60iugs-1p-sfp-25g-5p-giga-poe/up/MLAU3474345551" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td><td class="numero">$133.759,33</td><td class="numero">$133.759,33</td><td><a href="https://www.mercadolibre.com.ar/switch-tplink-tlsg108pe-smart-gigabit-8-puertos-4-poe/up/MLAU375770224" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td><td class="numero">$84.942,00</td><td class="numero">$254.826,00</td><td><a href="https://www.mercadolibre.com.ar/switch-gigabit-tp-link-tl-sg108e-easy-smart/p/MLA2090124795?pdp_filters=item_id%3AMLA2135881509" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
@@ -205,9 +205,9 @@
                     <tr><td>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total)</td><td>30</td><td class="numero">$9.880,50</td><td class="numero">$296.415,00</td><td><a href="https://www.mercadolibre.com.ar/cable-canal-autoadhesivo-kalop-40x30-tira-x-2-mts-pvc/up/MLAU254747460" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total)</td><td>4</td><td class="numero">$11.390,00</td><td class="numero">$45.560,00</td><td><a href="https://www.mercadolibre.com.ar/accesorios-para-cablecanal-curva-40x30-kalop-x5-unidades/up/MLAU3025568873" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                 </tbody>
-                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$8.372.413,33</td><td>ARS</td></tr></tfoot>
+                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$7.378.615,33</td><td>ARS</td></tr></tfoot>
             </table></div>
-            <p>Los once monitores se compran por separado. Los teclados y mouse están incluidos en las PC seleccionadas. El disco externo es independiente del SSD del equipo que comparte los archivos.</p>
+            <p>Los nueve monitores se compran por separado. Los teclados y mouse están incluidos en las PC seleccionadas. El disco externo es independiente del SSD del equipo que comparte los archivos.</p>
         </section>
         <section id="fuentes">
             <h2>10. Fuentes del presupuesto</h2>
@@ -255,22 +255,22 @@
             <div class="tabla"><table>
                 <thead><tr><th>Concepto</th><th>Importe en ARS</th></tr></thead>
                 <tbody>
-                    <tr><td>Materiales</td><td class="numero">$8.372.413,33</td></tr>
+                    <tr><td>Materiales</td><td class="numero">$7.378.615,33</td></tr>
                     <tr><td>Software del primer año, con reserva impositiva</td><td class="numero">$4.038.948,00</td></tr>
                     <tr><td>Mano de obra</td><td class="numero">$1.120.000,00</td></tr>
-                    <tr><td>Subtotal</td><td class="numero">$13.531.361,33</td></tr>
-                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$1.353.136,13</td></tr>
+                    <tr><td>Subtotal</td><td class="numero">$12.537.563,33</td></tr>
+                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$1.253.756,33</td></tr>
                 </tbody>
-                <tfoot><tr><th>Total general</th><td class="numero"><strong>$14.884.497,46</strong></td></tr></tfoot>
+                <tfoot><tr><th>Total general</th><td class="numero"><strong>$13.791.319,66</strong></td></tr></tfoot>
             </table></div>
-            <p>El total incluye los materiales, la instalación, doce meses de Photoshop para ocho usuarios y Office web para tres usuarios, la reserva impositiva del software y un 10 % de imprevistos. Queda $115.502,54 por debajo del límite de $15.000.000.</p>
+            <p>El total incluye los materiales, la instalación, doce meses de Photoshop para ocho usuarios y Office web para tres usuarios, la reserva impositiva del software y un 10 % de imprevistos. Queda $1.208.680,34 por debajo del límite de $15.000.000.</p>
             <p>Es una estimación orientativa: se requiere una cotización actualizada para comprar. No incluye el abono de Internet ni las renovaciones de software a partir del segundo año. La copia externa utilizará el almacenamiento de OneDrive incluido en Microsoft 365 Empresa Básico.</p>
         </section>
         <section id="backup">
             <h2>13. Sistema de backup</h2>
             <p>Un backup es una copia independiente que permite recuperar archivos borrados, dañados o afectados por un incidente.</p>
             <h3>Almacenamiento principal</h3>
-            <p>Una de las tres PC de PB alojará los archivos compartidos en su SSD de 240 GB, con cuentas y permisos individuales. Se mantendrá encendida hasta finalizar los backups de las 21:30 y durante las tareas programadas del domingo. Su capacidad se controlará periódicamente.</p>
+            <p>La PC compartida de PB alojará los archivos compartidos en su SSD de 240 GB, con cuentas y permisos individuales. Se mantendrá encendida hasta finalizar los backups de las 21:30 y durante las tareas programadas del domingo. Su capacidad se controlará periódicamente.</p>
             <h3>Estrategia 3-2-1</h3>
             <ul>
                 <li><strong>Tres copias:</strong> originales en la PC de archivos, backup en el disco externo Toshiba de 1 TB y backup cifrado en OneDrive.</li>
@@ -317,8 +317,8 @@
         </section>
         <section id="conclusion">
             <h2>15. Conclusión</h2>
-            <p>La estrella extendida conecta las tres plantas y permite ampliar la red. Once computadoras cubren los puestos de catorce empleados por turnos. Diseño utilizará Ryzen 5 con gráficos integrados y 8 GB de RAM para portadas sencillas. Las carpetas compartidas, los permisos, el firewall y las VLAN organizarán el acceso a la información; las copias locales y externas reducirán el riesgo de pérdida de archivos.</p>
-            <p>El presupuesto de $14.884.497,46 incluye materiales, mano de obra, el primer año de Photoshop y Office web, una reserva impositiva e imprevistos, dentro del límite de quince millones de pesos.</p>
+            <p>La estrella extendida conecta las tres plantas y permite ampliar la red. Nueve computadoras cubren las necesidades de catorce empleados: una compartida en planta baja, cinco en Diseño utilizadas en dos turnos y tres en Administración. Diseño utilizará Ryzen 5 con gráficos integrados y 8 GB de RAM para portadas sencillas. Las carpetas compartidas, los permisos, el firewall y las VLAN organizarán el acceso a la información; las copias locales y externas reducirán el riesgo de pérdida de archivos.</p>
+            <p>El presupuesto de $13.791.319,66 incluye materiales, mano de obra, el primer año de Photoshop y Office web, una reserva impositiva e imprevistos, dentro del límite de quince millones de pesos.</p>
         </section>
     </main>
     <footer>
