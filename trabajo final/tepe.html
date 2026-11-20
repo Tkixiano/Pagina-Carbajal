@@ -50,7 +50,7 @@
                 </tbody>
             </table></div>
             <p>La empresa tiene <strong>14 empleados, 11 computadoras, 3 plantas y 3 sectores</strong>. No hacen falta 14 computadoras: los tres empleados del segundo turno de Diseño utilizan las mismas cinco computadoras del primer turno, sin superposición horaria.</p>
-            <p>Cada empleado tendrá su propia cuenta de usuario, aunque comparta una computadora. Así se mantienen separados sus archivos y configuraciones personales. Los documentos compartidos se guardarán en carpetas del NAS con permisos por sector.</p>
+            <p>Cada empleado tendrá su propia cuenta de usuario, aunque comparta una computadora. Así se mantienen separados sus archivos y configuraciones personales. Los documentos compartidos se guardarán en carpetas del equipo de archivos con permisos por sector.</p>
         </section>
         <section id="topologia">
             <h2>3. Topología seleccionada: estrella extendida</h2>
@@ -65,7 +65,7 @@
             <h3>Desventajas</h3>
             <ul>
                 <li>Requiere varios switches y más cableado que algunas topologías antiguas, como bus.</li>
-                <li>Una falla del switch central puede interrumpir la comunicación entre las plantas y el acceso al NAS e Internet.</li>
+                <li>Una falla del switch central puede interrumpir la comunicación entre las plantas y el acceso al equipo de archivos e Internet.</li>
                 <li>Tiene un costo inicial superior al de soluciones muy simples.</li>
             </ul>
         </section>
@@ -90,8 +90,8 @@
                 <p>↕ Enlace del proveedor</p>
                 <div class="equipo">Router / firewall MikroTik</div>
                 <p>↕ Ethernet</p>
-                <div class="equipo">Switch central administrable de 24 puertos</div>
-                <p>↔ NAS conectado directamente al switch central</p>
+                <div class="equipo">Switch central administrable de 8 puertos (TP-Link TL-SG108PE)</div>
+                <p>Equipo de archivos: una de las 3 PC de PB, conectada al switch PB</p>
                 <p>Desde el switch central sale un enlace independiente hacia cada switch de planta:</p>
                 <div class="ramas">
                     <div class="rama"><div class="equipo">Switch PB</div><p>↕</p><p>3 PC de Dispositivos<br>1 punto de acceso Wi-Fi</p></div>
@@ -99,137 +99,153 @@
                     <div class="rama"><div class="equipo">Switch P2</div><p>↕</p><p>3 PC de Administración<br>1 punto de acceso Wi-Fi<br>1 impresora multifunción</p></div>
                 </div>
             </div>
-            <p>Dentro de una misma red local, el switch entrega los datos al equipo de destino. Para llegar al NAS, los datos pasan por el switch de planta y el central. El router comunica las distintas VLAN cuando las reglas lo permiten y conecta la empresa con Internet a través del equipo del proveedor. El tráfico entre sectores se controla con el firewall.</p>
+            <p>Dentro de una misma red local, el switch entrega los datos al equipo de destino. Para llegar al equipo de archivos de PB desde otro piso, los datos pasan por los switches de planta y el central; el router interviene al comunicar distintas VLAN. El router comunica las distintas VLAN cuando las reglas lo permiten y conecta la empresa con Internet a través del equipo del proveedor. El tráfico entre sectores se controla con el firewall.</p>
         </section>
         <section id="distribucion">
             <h2>6. Distribución física de los dispositivos</h2>
             <h3>Planta baja: Dispositivos y rack principal</h3>
-            <p>Se instalarán tres computadoras de oficina, un switch Gigabit de ocho puertos y un punto de acceso Wi-Fi. En esta planta se ubicará el rack principal con el router MikroTik, el switch central, los patch panels, el NAS y la UPS, usando bandejas cuando corresponda.</p>
-            <p>El rack estará en un sector protegido, ventilado, seco y con acceso restringido, próximo al ingreso del servicio de Internet. La UPS alimentará los equipos críticos del rack para permitir un apagado seguro; su potencia y autonomía deben dimensionarse. No se supone que una sola UPS mantenga encendidas las once computadoras ni los equipos remotos de cada piso.</p>
+            <p>Se instalarán tres PC Athlon 3000G con 8 GB de RAM, SSD de 240 GB, monitor Solarmax Full HD de 21,5 pulgadas, teclado y mouse. Una de estas tres computadoras también alojará las carpetas compartidas, con permisos individuales, y permanecerá encendida hasta completar los backups.</p>
+            <p>Habrá un switch TP-Link TL-SG108E de ocho puertos Gigabit y un AP TP-Link TL-WA801ND. El rack GLC de 12U alojará el router MikroTik hEX S (2025), el switch central TL-SG108PE y los patch panels. La UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V, protegerá el equipo de archivos y los equipos centrales, con la distribución eléctrica dimensionada por el instalador. El disco externo Toshiba de 1 TB se conectará al equipo de archivos para las copias.</p>
+            <p>El rack estará en un lugar protegido, ventilado y con acceso restringido, cerca del ingreso de Internet. La UPS permite afrontar cortes breves y un apagado ordenado; no se dimensiona para alimentar las once PC.</p>
             <h3>Primer piso: Diseño gráfico</h3>
-            <p>Se instalarán cinco computadoras de alto rendimiento, cinco monitores, un switch Gigabit de ocho puertos y un punto de acceso Wi-Fi. Cada computadora tendrá un procesador Ryzen 7 o equivalente, 32 GB de RAM, SSD de 1 TB y una tarjeta gráfica dedicada, por ejemplo RTX 4060.</p>
-            <p>Photoshop y las imágenes de alta resolución necesitan suficiente memoria, procesador y almacenamiento rápido. Una GPU dedicada ayuda en funciones aceleradas. El monitor deberá ofrecer una reproducción de color adecuada para diseño, pendiente de definir por modelo.</p>
+            <p>Se instalarán cinco PC con <strong>Ryzen 5 3400G, 8 GB de RAM y SSD de 240 GB, sin tarjeta gráfica dedicada</strong>, con gráficos Radeon integrados, teclado y mouse. Cada puesto tendrá un monitor Solarmax Full HD de 21,5 pulgadas. Se instalarán un switch TL-SG108E y un AP TL-WA801ND.</p>
             <h3>Segundo piso: Administración</h3>
-            <p>Se instalarán tres computadoras de oficina, un switch Gigabit de ocho puertos, un punto de acceso Wi-Fi y una impresora multifunción conectada a la red. Para documentos, planillas y tareas administrativas alcanza una gráfica integrada; no se necesita una tarjeta dedicada de alto rendimiento.</p>
-            <h3>Cableado y montaje</h3>
-            <p>Las once computadoras se conectarán por cable Ethernet UTP categoría 6. Cada switch secundario tendrá un enlace al switch central. Los puntos de acceso se ubicarán en zonas centrales y elevadas de cada planta, según una revisión de cobertura, para conectar dispositivos móviles.</p>
-            <p>Se usarán canaletas, tomas y patch cords Cat6. Los cables se identificarán en ambos extremos, por ejemplo P1-PC03, y se registrarán los puertos usados. El tendido de datos se separará del eléctrico según las condiciones de instalación. Antes de montar se deben medir las distancias, definir el plano y verificar que cada canal Ethernet de cobre no supere los 100 metros, incluidos los patch cords; si se excede, habrá que revisar el enlace y cotizar otra solución.</p>
-            <p>Ocupación prevista de cada switch de ocho puertos: PB, 5 puertos (3 PC, 1 AP y 1 enlace); P1, 7 (5 PC, 1 AP y 1 enlace); P2, 6 (3 PC, 1 AP, 1 impresora y 1 enlace). El central utilizará inicialmente 5 puertos: router, NAS y los tres enlaces de planta. Los AP necesitan alimentación compatible: confirmar fuente incluida o inyectores PoE antes de comprar.</p>
+            <p>Se instalarán tres PC Athlon 3000G de 8 GB y SSD de 240 GB con gráficos integrados, monitor, teclado y mouse; un switch TL-SG108E, un AP TL-WA801ND y una impresora HP DeskJet Ink Advantage 2875 Wi-Fi usada.</p>
+            <h3>Cableado y alimentación</h3>
+            <p>Las once PC y los enlaces entre switches usarán UTP Cat5e de cobre, apto para Gigabit Ethernet hasta 100 metros por canal, incluidos los patch cords. Las tomas, patch panels y patch cords Cat6 son compatibles, pero la categoría del conjunto queda limitada por el Cat5e.</p>
+            <p>Las canaletas protegerán el cableado, separado del tendido eléctrico. Los AP se ubicarán en posiciones centrales y elevadas. El Wi-Fi N300 tiene un puerto Ethernet de 100 Mbps; los puestos cableados conservarán enlaces Gigabit. Los AP usarán sus fuentes e inyectores PoE pasivos correspondientes.</p>
+            <p>Ocupación de puertos: PB, 5 (3 PC, AP y enlace); P1, 7 (5 PC, AP y enlace); P2, 5 (3 PC, AP y enlace), con impresora por Wi-Fi. El central usará 4 puertos: router y tres enlaces de planta. El router se alimentará por un puerto PoE compatible del switch central. Los switches TL-SG108E y TL-SG108PE permiten configurar VLAN; se verificará la versión exacta antes de comprar.</p>
         </section>
         <section id="componentes">
             <h2>7. Componentes y dispositivos necesarios</h2>
             <div class="tabla"><table>
                 <thead><tr><th>Componente</th><th>Cantidad</th></tr></thead>
                 <tbody>
-                    <tr><td>Computadoras de oficina</td><td>6</td></tr>
-                    <tr><td>Computadoras de diseño</td><td>5</td></tr>
-                    <tr><td>Monitores de diseño</td><td>5</td></tr>
-                    <tr><td>Router MikroTik hEX S</td><td>1</td></tr>
-                    <tr><td>Switch central administrable de 24 puertos</td><td>1</td></tr>
-                    <tr><td>Switches Gigabit de 8 puertos</td><td>3</td></tr>
-                    <tr><td>Puntos de acceso Wi-Fi 6</td><td>3</td></tr>
-                    <tr><td>NAS con dos discos</td><td>1</td></tr>
-                    <tr><td>Impresora multifunción</td><td>1</td></tr>
-                    <tr><td>Bobina de cable Cat6 de 305 metros</td><td>1</td></tr>
-                    <tr><td>Patch cords Cat6</td><td>36</td></tr>
-                    <tr><td>Rack y accesorios</td><td>1</td></tr>
-                    <tr><td>Patch panels Cat6</td><td>2</td></tr>
-                    <tr><td>Tomas o conectores RJ45 presupuestados</td><td>20</td></tr>
-                    <tr><td>UPS</td><td>1</td></tr>
-                    <tr><td>Canaletas y accesorios</td><td>1 conjunto</td></tr>
-                    <tr><td>Teclados y mouse</td><td>11 conjuntos</td></tr>
+                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>6</td></tr>
+                    <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>11</td></tr>
+                    <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td></tr>
+                    <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td></tr>
+                    <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td></tr>
+                    <tr><td>Access point TP-Link TL-WA801ND, Wi-Fi N300, con fuente e inyector pasivo</td><td>3</td></tr>
+                    <tr><td>Bobina UTP Cat5e Commscope de cobre, 305 metros</td><td>1</td></tr>
+                    <tr><td>Patch cord Vention Cat6 de 1 metro</td><td>36</td></tr>
+                    <tr><td>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada)</td><td>1</td></tr>
+                    <tr><td>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup</td><td>1</td></tr>
+                    <tr><td>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos</td><td>1</td></tr>
+                    <tr><td>Patch panel Cat6 de 24 puertos con jacks</td><td>2</td></tr>
+                    <tr><td>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total)</td><td>2</td></tr>
+                    <tr><td>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V</td><td>1</td></tr>
+                    <tr><td>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total)</td><td>30</td></tr>
+                    <tr><td>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total)</td><td>4</td></tr>
                 </tbody>
             </table></div>
             <h3>Función de los componentes</h3>
             <ul>
-                <li><strong>PC de oficina:</strong> documentos, gestión, navegación y tareas administrativas.</li>
-                <li><strong>PC de diseño y monitores:</strong> edición de imágenes y visualización del trabajo gráfico.</li>
-                <li><strong>Router MikroTik:</strong> salida a Internet, direccionamiento, comunicación entre VLAN y firewall.</li>
-                <li><strong>Switch central:</strong> interconecta los switches de las plantas, el router y el NAS.</li>
-                <li><strong>Switches secundarios:</strong> conectan los equipos de cada piso.</li>
-                <li><strong>Access points:</strong> brindan conectividad inalámbrica a móviles y una red de invitados separada.</li>
-                <li><strong>NAS y discos:</strong> almacenan archivos compartidos y permiten programar tareas de copia.</li>
-                <li><strong>Impresora multifunción:</strong> imprime y permite digitalizar documentos según su configuración.</li>
-                <li><strong>Bobina Cat6:</strong> permite realizar el tendido fijo de la red.</li>
-                <li><strong>Patch cords:</strong> unen puestos con tomas y puertos de patch panel con equipos activos.</li>
-                <li><strong>Rack y accesorios:</strong> alojan y organizan los dispositivos centrales.</li>
-                <li><strong>Patch panels:</strong> terminan y ordenan los cables fijos; no reemplazan a los switches.</li>
-                <li><strong>Tomas y conectores RJ45:</strong> terminan las conexiones de los puestos y otros enlaces.</li>
-                <li><strong>UPS:</strong> aporta energía temporal y protección para los equipos críticos.</li>
-                <li><strong>Canaletas:</strong> protegen y organizan los recorridos.</li>
-                <li><strong>Teclados y mouse:</strong> permiten operar cada puesto de trabajo.</li>
+                <li><strong>PC y monitores:</strong> permiten trabajar; los Ryzen 5 se destinan al diseño básico y los Athlon a tareas de oficina. Los once equipos incluyen teclado y mouse.</li>
+                <li><strong>Router:</strong> conecta con Internet, administra las subredes y aplica el firewall.</li>
+                <li><strong>Switches:</strong> el central une las plantas y los secundarios conectan los puestos de cada piso.</li>
+                <li><strong>Puntos de acceso:</strong> conectan móviles y separan las redes inalámbricas mediante SSID y VLAN compatibles.</li>
+                <li><strong>Equipo de archivos y disco externo:</strong> una PC de PB comparte documentos; el disco USB guarda copias independientes.</li>
+                <li><strong>Impresora:</strong> imprime y digitaliza documentos.</li>
+                <li><strong>Bobina, patch cords, patch panels y tomas RJ45:</strong> forman y ordenan los enlaces de cobre.</li>
+                <li><strong>Rack, bandeja, canaletas y curvas:</strong> alojan los equipos y protegen el tendido.</li>
+                <li><strong>UPS:</strong> aporta energía temporal para los equipos críticos.</li>
             </ul>
-            <p>Las cantidades de cable, patch cords y conectores son provisionales y deben ajustarse después de medir el edificio y realizar el plano. Las 20 unidades de tomas o conectores no equivalen automáticamente a 20 enlaces completos: hay que detallar cajas, módulos, terminaciones y extremos de cada tramo. Los dos patch panels requieren un esquema de terminación y ubicación acorde con los tres pisos; los gabinetes secundarios y materiales faltantes deberán cotizarse si el relevamiento los exige.</p>
-            <p>El presupuesto solo detalla cinco monitores. Se asume que los seis puestos de oficina ya tienen pantalla o que esta viene incluida en su cotización; debe confirmarse. Si no se cumple, faltará presupuestar seis monitores. También se deben confirmar fuentes, cables y contenido de cada conjunto para evitar omisiones o compras duplicadas.</p>
+            <p>Se prevén 305 metros de cable, 36 patch cords, 20 tomas, 60 metros de canaleta y 20 curvas. Las cantidades y la ubicación de las terminaciones se ajustarán al medir el edificio y realizar el plano de instalación.</p>
         </section>
         <section id="software">
-            <h2>8. Software necesario</h2>
+            <h2>8. Software necesario y licencias del primer año</h2>
             <div class="tabla"><table>
                 <thead><tr><th>Software</th><th>Uso</th><th>Tipo de licencia</th></tr></thead>
                 <tbody>
-                    <tr><td>Windows 11</td><td>Sistema operativo de las once computadoras; cuentas individuales.</td><td>Comercial por equipo; confirmar si está incluida. Edición Pro si se requiere incorporación a un dominio.</td></tr>
-                    <tr><td>Adobe Photoshop</td><td>Edición y diseño gráfico en el primer piso.</td><td>Suscripción comercial según usuarios y condiciones de Adobe.</td></tr>
-                    <tr><td>LibreOffice</td><td>Documentos, planillas y presentaciones.</td><td>Software libre y gratuito.</td></tr>
-                    <tr><td>Microsoft Defender</td><td>Protección antivirus y frente a amenazas.</td><td>Antivirus integrado en Windows; servicios empresariales adicionales pueden requerir otra licencia.</td></tr>
-                    <tr><td>RouterOS</td><td>Configuración de rutas, firewall y VLAN en el MikroTik.</td><td>Propietaria; licencia correspondiente incluida en el router adquirido.</td></tr>
-                    <tr><td>Software del NAS</td><td>Almacenamiento, usuarios, permisos y automatización de backups.</td><td>Depende del fabricante; confirmar funciones incluidas y complementos de pago.</td></tr>
+                    <tr><td>Windows 11</td><td>Sistema operativo y cuentas individuales de las PC.</td><td>Comercial por equipo; la inclusión de licencias originales en las PC debe confirmarse con los vendedores. No hay una cotización independiente de Windows en este presupuesto.</td></tr>
+                    <tr><td>Adobe Photoshop, plan Fotografía de 1 TB</td><td>Portadas de libros; 8 usuarios de Diseño, distribuidos en dos turnos.</td><td>8 suscripciones individuales con compromiso anual. Cada empleado tendrá su cuenta de Adobe.</td></tr>
+                    <tr><td>Microsoft 365 Empresa Básico</td><td>Word, Excel y PowerPoint web para los 3 empleados de Administración; 1 TB de OneDrive por usuario.</td><td>3 suscripciones comerciales anuales. Incluye aplicaciones web y móviles, no Office de escritorio.</td></tr>
+                    <tr><td>LibreOffice</td><td>Documentos, planillas y presentaciones en los demás puestos.</td><td>Libre y gratuito.</td></tr>
+                    <tr><td>Microsoft Defender</td><td>Antivirus de las computadoras.</td><td>Integrado en Windows.</td></tr>
+                    <tr><td>RouterOS</td><td>Router, firewall y VLAN.</td><td>Incluido en el router MikroTik.</td></tr>
+                    <tr><td>Duplicati</td><td>Backups automáticos, cifrados y con versiones al disco USB y a OneDrive.</td><td>Software libre y gratuito.</td></tr>
                 </tbody>
             </table></div>
-            <p>Photoshop necesita licencias comerciales adquiridas conforme a la cantidad de usuarios y las condiciones de Adobe. Los ocho empleados de Diseño no deben compartir una única identidad de Adobe por usar cinco PC; hay que cotizar la modalidad permitida para ese uso.</p>
-            <p>Las licencias comerciales y los servicios de almacenamiento externo no están incluidos en el presupuesto inicial, salvo indicación expresa del proveedor. Se verificará la inclusión de Windows y RouterOS en cada compra. Para esta escala se pueden administrar cuentas locales en las PC y cuentas individuales en el NAS; no se presupuestó un servidor de dominio ni se supone una administración central de Windows ya implementada.</p>
+            <h3>Presupuesto de software: 12 meses</h3>
+            <div class="tabla"><table>
+                <thead><tr><th>Licencia</th><th>Usuarios</th><th>Precio de referencia por usuario</th><th>Base anual en ARS</th><th>Reserva impositiva</th><th>Total anual previsto</th></tr></thead>
+                <tbody>
+                    <tr><td>Photoshop incluido en Fotografía 1 TB</td><td>8</td><td>ARS $23.400 por mes, plan anual</td><td class="numero">$2.246.400,00</td><td class="numero">$1.145.664,00</td><td class="numero">$3.392.064,00</td></tr>
+                    <tr><td>Microsoft 365 Empresa Básico (Office web)</td><td>3</td><td>USD 7 por mes, pago anual</td><td class="numero">$428.400,00</td><td class="numero">$218.484,00</td><td class="numero">$646.884,00</td></tr>
+                </tbody>
+                <tfoot><tr><th colspan="5">Total de software del primer año</th><td class="numero">$4.038.948,00</td></tr></tfoot>
+            </table></div>
+            <p>Photoshop: 8 × $23.400 × 12 = $2.246.400. Office: 3 × USD 7 × 12 = USD 252; se utiliza un tipo de cambio de planificación de $1.700 por dólar, que da $428.400. La conversión es una estimación en pesos, no un precio publicado por Microsoft en ARS.</p>
+            <p>Se reserva un 51 % adicional sobre las bases para impuestos y percepciones de los pagos de software. Es una provisión de planificación, no una liquidación impositiva verificada; el importe facturado dependerá del medio de pago y del tratamiento aplicable. Los doce meses completos y esta reserva están incluidos en el total del proyecto. Las renovaciones posteriores se presupuestan nuevamente.</p>
+            <p>Fuentes: <a href="https://www.adobe.com/ar/creativecloud/photography/compare-plans.html" target="_blank" rel="noopener noreferrer">Adobe: plan Fotografía con Photoshop</a> y <a href="https://www.microsoft.com/es-ar/microsoft-365/business/microsoft-365-business-basic" target="_blank" rel="noopener noreferrer">Microsoft: Empresa Básico</a>.</p>
         </section>
         <section id="materiales">
             <h2>9. Presupuesto de materiales</h2>
-            <p>Se conservan los valores de referencia proporcionados para el trabajo. <strong>No constituyen una cotización comercial actualizada.</strong> La letra R indica un importe aportado con fuente comercial de referencia, sin validación actual del precio exacto. La letra E indica un valor estimado de planificación sin una publicación específica asociada. Ningún importe se presenta como precio publicado verificado en esta revisión.</p>
-            <div class="tabla"><table id="tabla-materiales">
-                <caption>Materiales en pesos argentinos (ARS)</caption>
-                <thead><tr><th>Componente</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th></tr></thead>
+            <p>Importes en pesos argentinos. Se usan los precios de referencia de las publicaciones enlazadas; la impresora seleccionada es usada.</p>
+            <div class="tabla"><table>
+                <thead><tr><th>Componente</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th><th>Fuente</th></tr></thead>
                 <tbody>
-                    <tr><td>PC de oficina (R)</td><td>6</td><td class="numero">$1.056.603</td><td class="numero">$6.339.618</td></tr>
-                    <tr><td>PC de diseño (R)</td><td>5</td><td class="numero">$3.115.119</td><td class="numero">$15.575.595</td></tr>
-                    <tr><td>Monitor de diseño (E)</td><td>5</td><td class="numero">$250.000</td><td class="numero">$1.250.000</td></tr>
-                    <tr><td>Router MikroTik (R)</td><td>1</td><td class="numero">$133.862</td><td class="numero">$133.862</td></tr>
-                    <tr><td>Switch central (R)</td><td>1</td><td class="numero">$433.804</td><td class="numero">$433.804</td></tr>
-                    <tr><td>Switch de 8 puertos (R)</td><td>3</td><td class="numero">$31.886</td><td class="numero">$95.658</td></tr>
-                    <tr><td>Access point Wi-Fi 6 (R)</td><td>3</td><td class="numero">$134.464</td><td class="numero">$403.392</td></tr>
-                    <tr><td>Bobina Cat6 de 305 m (R)</td><td>1</td><td class="numero">$503.790</td><td class="numero">$503.790</td></tr>
-                    <tr><td>Patch cord Cat6 (R)</td><td>36</td><td class="numero">$4.133</td><td class="numero">$148.788</td></tr>
-                    <tr><td>Impresora multifunción (R)</td><td>1</td><td class="numero">$699.000</td><td class="numero">$699.000</td></tr>
-                    <tr><td>NAS con dos discos (E)</td><td>1</td><td class="numero">$1.300.000</td><td class="numero">$1.300.000</td></tr>
-                    <tr><td>Rack y accesorios (E)</td><td>1</td><td class="numero">$250.000</td><td class="numero">$250.000</td></tr>
-                    <tr><td>Patch panel Cat6 (E)</td><td>2</td><td class="numero">$110.000</td><td class="numero">$220.000</td></tr>
-                    <tr><td>Tomas y conectores RJ45 (E)</td><td>20</td><td class="numero">$8.000</td><td class="numero">$160.000</td></tr>
-                    <tr><td>UPS (E)</td><td>1</td><td class="numero">$400.000</td><td class="numero">$400.000</td></tr>
-                    <tr><td>Canaletas y accesorios, conjunto (E)</td><td>1</td><td class="numero">$250.000</td><td class="numero">$250.000</td></tr>
-                    <tr><td>Conjunto de teclado y mouse (E)</td><td>11</td><td class="numero">$25.000</td><td class="numero">$275.000</td></tr>
+                    <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>6</td><td class="numero">$397.999,00</td><td class="numero">$2.387.994,00</td><td><a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td><td class="numero">$523.990,00</td><td class="numero">$2.619.950,00</td><td><a href="https://www.mercadolibre.com.ar/pc-ryzen-5-completa-3400g-8-gb-240-gb-wi-fi-mouse-y-teclado-aconcawa-pc/p/MLA78236679" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>11</td><td class="numero">$98.900,00</td><td class="numero">$1.087.900,00</td><td><a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td><td class="numero">$127.700,00</td><td class="numero">$127.700,00</td><td><a href="https://www.mercadolibre.com.ar/mikrotik-router-hex-s-2025-e60iugs-1p-sfp-25g-5p-giga-poe/up/MLAU3474345551" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td><td class="numero">$133.759,33</td><td class="numero">$133.759,33</td><td><a href="https://www.mercadolibre.com.ar/switch-tplink-tlsg108pe-smart-gigabit-8-puertos-4-poe/up/MLAU375770224" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td><td class="numero">$84.942,00</td><td class="numero">$254.826,00</td><td><a href="https://www.mercadolibre.com.ar/switch-gigabit-tp-link-tl-sg108e-easy-smart/p/MLA2090124795?pdp_filters=item_id%3AMLA2135881509" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Access point TP-Link TL-WA801ND, Wi-Fi N300, con fuente e inyector pasivo</td><td>3</td><td class="numero">$50.000,00</td><td class="numero">$150.000,00</td><td><a href="https://www.mercadolibre.com.ar/access-point-tl-wa801nd-tp-link-inalambrico-n-300mbps-v/up/MLAU5270522565" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Bobina UTP Cat5e Commscope de cobre, 305 metros</td><td>1</td><td class="numero">$323.000,00</td><td class="numero">$323.000,00</td><td><a href="https://www.mercadolibre.com.ar/cable-utp-cat-5e-commscope-amp-netconnecta-rollo-305-metros-gris/p/MLA27970906" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Patch cord Vention Cat6 de 1 metro</td><td>36</td><td class="numero">$3.799,00</td><td class="numero">$136.764,00</td><td><a href="https://www.mercadolibre.com.ar/cable-de-red-vention-cat6-certificado-1-metro-premium-patch-cord-utp-rj45-ethernet-1000-mbps-250-mhz-cobre-pc-notebook-servidores-negro-ibebf/p/MLA28459512?pdp_filters=item_id%3AMLA1733505538" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada)</td><td>1</td><td class="numero">$150.000,00</td><td class="numero">$150.000,00</td><td><a href="https://www.mercadolibre.com.ar/impresora-multifuncion-hp-deskjet-ink-advantage-2875-wifi/up/MLAU5822961590" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup</td><td>1</td><td class="numero">$234.999,00</td><td class="numero">$234.999,00</td><td><a href="https://www.mercadolibre.com.ar/disco-externo-toshiba-canvio-basics-1tb-usb-30-portatil-hdtb510xk3aa-negro/p/MLA22636418" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos</td><td>1</td><td class="numero">$174.896,00</td><td class="numero">$174.896,00</td><td><a href="https://www.mercadolibre.com.ar/kit-de-rack-12u-glc-ecomural12u450-con-bandeja-fija-300mm/up/MLAU3783920636" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Patch panel Cat6 de 24 puertos con jacks</td><td>2</td><td class="numero">$35.000,00</td><td class="numero">$70.000,00</td><td><a href="https://www.mercadolibre.com.ar/patchera-patch-panel-24-puertos-rj45-cat6-pkrone110-cjack/p/MLA2040255106" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total)</td><td>2</td><td class="numero">$31.075,00</td><td class="numero">$62.150,00</td><td><a href="https://www.mercadolibre.com.ar/prosoft-roseta-rj45-red-con-jack-cat6-pack-de-10-unidades-cables-cat-6/p/MLA38481926" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V</td><td>1</td><td class="numero">$116.500,00</td><td class="numero">$116.500,00</td><td><a href="https://www.mercadolibre.com.ar/ups-interactiva-hikvision-1000va-600w-ds-ups1000-r-negro/p/MLA79218598" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total)</td><td>30</td><td class="numero">$9.880,50</td><td class="numero">$296.415,00</td><td><a href="https://www.mercadolibre.com.ar/cable-canal-autoadhesivo-kalop-40x30-tira-x-2-mts-pvc/up/MLAU254747460" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total)</td><td>4</td><td class="numero">$11.390,00</td><td class="numero">$45.560,00</td><td><a href="https://www.mercadolibre.com.ar/accesorios-para-cablecanal-curva-40x30-kalop-x5-unidades/up/MLAU3025568873" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                 </tbody>
-                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$28.438.507</td></tr></tfoot>
+                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$8.372.413,33</td><td>ARS</td></tr></tfoot>
             </table></div>
+            <p>Los once monitores se compran por separado. Los teclados y mouse están incluidos en las PC seleccionadas. El disco externo es independiente del SSD del equipo que comparte los archivos.</p>
         </section>
         <section id="fuentes">
             <h2>10. Fuentes del presupuesto</h2>
-            <p>Los siguientes enlaces son las fuentes de referencia indicadas en la propuesta. Los precios pueden cambiar por fecha, stock, tipo de cambio y forma de pago. Una página de categoría o lista general no certifica por sí sola el precio de un modelo específico. Los importes R se mantienen como referencias aportadas, sin atribuirles una verificación comercial actual.</p>
+            <p>Publicaciones de Mercado Libre para cada componente. Los precios pueden cambiar por vendedor, disponibilidad y forma de pago.</p>
             <ul>
-                <li>Computadoras de oficina: <a href="https://www.overdrivepc.com.ar/computadoras/oficina-y-hogar" target="_blank" rel="noopener noreferrer">OverdrivePC — Oficina y hogar</a>.</li>
-                <li>Computadoras de diseño: <a href="https://www.overdrivepc.com.ar/productos/pc-GAMER-Ryzen-7-8700F-B650-32GB-DDR5-SSD-1TB-NVME-RTX-4060/" target="_blank" rel="noopener noreferrer">OverdrivePC — Ryzen 7, 32 GB, SSD 1 TB y RTX 4060</a>.</li>
-                <li>Router MikroTik: <a href="https://endurances.com.ar/ar/marcas/mikrotik?page=3" target="_blank" rel="noopener noreferrer">Endurances — MikroTik</a>.</li>
-                <li>Switches, access points y cableado: <a href="https://ar.laufquen.com/listprice" target="_blank" rel="noopener noreferrer">Laufquen — Lista de precios</a>.</li>
-                <li>Impresora multifunción: <a href="https://portalinsumos.com.ar/producto/impresora-laser-multifuncion-brother-dcp-l2540dw-monocromatica-con-duplex-y-wifi/" target="_blank" rel="noopener noreferrer">Portal Insumos — Brother DCP-L2540DW</a>.</li>
+                <li>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse: <a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse: <a href="https://www.mercadolibre.com.ar/pc-ryzen-5-completa-3400g-8-gb-240-gb-wi-fi-mouse-y-teclado-aconcawa-pc/p/MLA78236679" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Monitor Solarmax SX22F Full HD de 21,5 pulgadas: <a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Router MikroTik hEX S E60iUGS (2025): <a href="https://www.mercadolibre.com.ar/mikrotik-router-hex-s-2025-e60iugs-1p-sfp-25g-5p-giga-poe/up/MLAU3474345551" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE: <a href="https://www.mercadolibre.com.ar/switch-tplink-tlsg108pe-smart-gigabit-8-puertos-4-poe/up/MLAU375770224" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables: <a href="https://www.mercadolibre.com.ar/switch-gigabit-tp-link-tl-sg108e-easy-smart/p/MLA2090124795?pdp_filters=item_id%3AMLA2135881509" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Access point TP-Link TL-WA801ND, Wi-Fi N300, con fuente e inyector pasivo: <a href="https://www.mercadolibre.com.ar/access-point-tl-wa801nd-tp-link-inalambrico-n-300mbps-v/up/MLAU5270522565" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Bobina UTP Cat5e Commscope de cobre, 305 metros: <a href="https://www.mercadolibre.com.ar/cable-utp-cat-5e-commscope-amp-netconnecta-rollo-305-metros-gris/p/MLA27970906" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Patch cord Vention Cat6 de 1 metro: <a href="https://www.mercadolibre.com.ar/cable-de-red-vention-cat6-certificado-1-metro-premium-patch-cord-utp-rj45-ethernet-1000-mbps-250-mhz-cobre-pc-notebook-servidores-negro-ibebf/p/MLA28459512?pdp_filters=item_id%3AMLA1733505538" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada): <a href="https://www.mercadolibre.com.ar/impresora-multifuncion-hp-deskjet-ink-advantage-2875-wifi/up/MLAU5822961590" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup: <a href="https://www.mercadolibre.com.ar/disco-externo-toshiba-canvio-basics-1tb-usb-30-portatil-hdtb510xk3aa-negro/p/MLA22636418" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos: <a href="https://www.mercadolibre.com.ar/kit-de-rack-12u-glc-ecomural12u450-con-bandeja-fija-300mm/up/MLAU3783920636" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Patch panel Cat6 de 24 puertos con jacks: <a href="https://www.mercadolibre.com.ar/patchera-patch-panel-24-puertos-rj45-cat6-pkrone110-cjack/p/MLA2040255106" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total): <a href="https://www.mercadolibre.com.ar/prosoft-roseta-rj45-red-con-jack-cat6-pack-de-10-unidades-cables-cat-6/p/MLA38481926" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V: <a href="https://www.mercadolibre.com.ar/ups-interactiva-hikvision-1000va-600w-ds-ups1000-r-negro/p/MLA79218598" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total): <a href="https://www.mercadolibre.com.ar/cable-canal-autoadhesivo-kalop-40x30-tira-x-2-mts-pvc/up/MLAU254747460" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total): <a href="https://www.mercadolibre.com.ar/accesorios-para-cablecanal-curva-40x30-kalop-x5-unidades/up/MLAU3025568873" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Photoshop: <a href="https://www.adobe.com/ar/creativecloud/photography/compare-plans.html" target="_blank" rel="noopener noreferrer">Planes oficiales de Adobe</a>.</li>
+                <li>Office web: <a href="https://www.microsoft.com/es-ar/microsoft-365/business/microsoft-365-business-basic" target="_blank" rel="noopener noreferrer">Microsoft 365 Empresa Básico</a>.</li>
             </ul>
-            <p>Consulta de referencia: 20/11/2026. No se pudo confirmar que los importes exactos aportados sigan publicados. La lista de Laufquen expresa precios en USD y conversiones a ARS, por lo que se debe confirmar moneda y cotización al comprar. Los valores E de monitores, NAS, rack, patch panels, conectores, UPS, canaletas y periféricos son estimaciones y requieren cotizaciones. No se inventan proveedores ni precios comerciales para esos conceptos.</p>
         </section>
         <section id="mano-obra">
             <h2>11. Mano de obra y tiempo de instalación</h2>
             <h3>Personal y tareas</h3>
             <p>Participarán <strong>dos técnicos de instalación de redes y un técnico especializado en configuración y seguridad</strong>. Los instaladores colocarán canaletas y cables, montarán el rack y los switches, conectarán las computadoras e identificarán los cables y puertos.</p>
-            <p>El especialista configurará el router, los switches y las VLAN compatibles, el NAS, los usuarios, los permisos y los backups. También realizará pruebas de conectividad, acceso a Internet, aislamiento de invitados y recuperación de archivos.</p>
+            <p>El especialista configurará el router, los switches y las VLAN compatibles, el equipo de archivos, los usuarios, los permisos y los backups. También realizará pruebas de conectividad, acceso a Internet, aislamiento de invitados y recuperación de archivos.</p>
             <div class="tabla"><table>
                 <thead><tr><th>Trabajo</th><th>Horas-persona</th><th>Precio por hora</th><th>Total</th></tr></thead>
                 <tbody>
-                    <tr><td>Instalación de red</td><td>48</td><td class="numero">$25.000</td><td class="numero">$1.200.000</td></tr>
-                    <tr><td>Configuración especializada</td><td>16</td><td class="numero">$30.000</td><td class="numero">$480.000</td></tr>
+                    <tr><td>Instalación de red</td><td>48</td><td class="numero">$15.000</td><td class="numero">$720.000</td></tr>
+                    <tr><td>Configuración especializada</td><td>16</td><td class="numero">$25.000</td><td class="numero">$400.000</td></tr>
                 </tbody>
-                <tfoot><tr><th>Total</th><td>64</td><td>—</td><td class="numero">$1.680.000</td></tr></tfoot>
+                <tfoot><tr><th>Total</th><td>64</td><td>—</td><td class="numero">$1.120.000</td></tr></tfoot>
             </table></div>
             <p>Las 48 horas-persona de instalación equivalen a 2 técnicos × 3 jornadas × 8 horas. Las 16 horas especializadas equivalen a dos jornadas de ocho horas de un especialista. El plazo total estimado es de <strong>4 a 5 días hábiles</strong>, incluyendo pruebas y puesta en funcionamiento; algunas tareas pueden realizarse en paralelo.</p>
             <p>Plan orientativo: días 1 a 3, montaje y cableado; día 4, configuración; día 5, pruebas, ajustes y entrega. Si parte de la configuración se adelanta, puede terminarse en cuatro días. Se coordinarán interrupciones con los sectores y sus turnos. Estas tarifas son estimaciones de planificación, no cotizaciones verificadas.</p>
@@ -239,40 +255,39 @@
             <div class="tabla"><table>
                 <thead><tr><th>Concepto</th><th>Importe en ARS</th></tr></thead>
                 <tbody>
-                    <tr><td>Total de materiales</td><td class="numero">$28.438.507,00</td></tr>
-                    <tr><td>Mano de obra</td><td class="numero">$1.680.000,00</td></tr>
-                    <tr><td>Subtotal de materiales y mano de obra</td><td class="numero">$30.118.507,00</td></tr>
-                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$3.011.850,70</td></tr>
+                    <tr><td>Materiales</td><td class="numero">$8.372.413,33</td></tr>
+                    <tr><td>Software del primer año, con reserva impositiva</td><td class="numero">$4.038.948,00</td></tr>
+                    <tr><td>Mano de obra</td><td class="numero">$1.120.000,00</td></tr>
+                    <tr><td>Subtotal</td><td class="numero">$13.531.361,33</td></tr>
+                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$1.353.136,13</td></tr>
                 </tbody>
-                <tfoot><tr><th>Total general</th><td class="numero"><strong>$33.130.357,70</strong></td></tr></tfoot>
+                <tfoot><tr><th>Total general</th><td class="numero"><strong>$14.884.497,46</strong></td></tr></tfoot>
             </table></div>
-            <p>Cálculo: $28.438.507 + $1.680.000 = $30.118.507; el 10 % es $3.011.850,70. La suma final es $33.130.357,70. Los importes están escritos directamente en HTML, sin cálculos en el navegador.</p>
-            <p>Se trata de una estimación orientativa en pesos argentinos; para ejecutar la compra se necesita una cotización actualizada, con modelos, stock, impuestos, flete y condiciones de pago confirmados. No están incluidos los gastos recurrentes de Internet, las licencias o suscripciones comerciales no expresamente incluidas, ni los backups externos. El disco independiente para la segunda copia local tampoco tiene un renglón presupuestado: debe cotizarse para completar la estrategia 3-2-1. Los imprevistos no sustituyen la cotización de faltantes conocidos.</p>
+            <p>El total incluye los materiales, la instalación, doce meses de Photoshop para ocho usuarios y Office web para tres usuarios, la reserva impositiva del software y un 10 % de imprevistos. Queda $115.502,54 por debajo del límite de $15.000.000.</p>
+            <p>Es una estimación orientativa: se requiere una cotización actualizada para comprar. No incluye el abono de Internet ni las renovaciones de software a partir del segundo año. La copia externa utilizará el almacenamiento de OneDrive incluido en Microsoft 365 Empresa Básico.</p>
         </section>
         <section id="backup">
             <h2>13. Sistema de backup</h2>
-            <p>Un backup es una copia independiente que permite recuperar información borrada, dañada o afectada por un incidente. Es fundamental porque los archivos de la empresa pueden perderse por errores humanos, fallas de equipos, robo o programas maliciosos.</p>
-            <h3>Almacenamiento principal: NAS con RAID 1</h3>
-            <p>El NAS tendrá dos discos configurados en RAID 1: ambos mantienen información en espejo. Si falla un disco, el otro puede permitir continuar trabajando mientras se reemplaza el dañado. La capacidad útil equivale aproximadamente a un disco, no a la suma de ambos. La capacidad de los discos se definirá según el volumen de trabajo y el crecimiento esperado.</p>
-            <p><strong>RAID 1 no reemplaza un backup.</strong> Un borrado o cifrado malicioso puede replicarse en ambos discos. Tampoco protege por sí solo frente al robo o incendio del NAS. Las dos unidades del espejo no se cuentan como dos copias independientes.</p>
+            <p>Un backup es una copia independiente que permite recuperar archivos borrados, dañados o afectados por un incidente.</p>
+            <h3>Almacenamiento principal</h3>
+            <p>Una de las tres PC de PB alojará los archivos compartidos en su SSD de 240 GB, con cuentas y permisos individuales. Se mantendrá encendida hasta finalizar los backups de las 21:30 y durante las tareas programadas del domingo. Su capacidad se controlará periódicamente.</p>
             <h3>Estrategia 3-2-1</h3>
             <ul>
-                <li><strong>Tres copias:</strong> el archivo principal en el NAS, un backup local independiente y un backup externo.</li>
-                <li><strong>Dos tipos de almacenamiento:</strong> por ejemplo NAS y disco USB independiente dedicado a backups, además del destino externo.</li>
-                <li><strong>Una copia fuera del edificio:</strong> en un servicio externo o en otra ubicación segura.</li>
+                <li><strong>Tres copias:</strong> originales en la PC de archivos, backup en el disco externo Toshiba de 1 TB y backup cifrado en OneDrive.</li>
+                <li><strong>Dos tipos de almacenamiento:</strong> SSD interno y disco duro USB, más almacenamiento en la nube.</li>
+                <li><strong>Una copia fuera del edificio:</strong> OneDrive, dentro del espacio de una cuenta autorizada de Administración.</li>
             </ul>
-            <p>Se propone copiar el NAS a un disco USB independiente y enviar otra copia a un destino externo. El disco local se desconectará o rotará tras la copia, o se utilizará un destino con protección equivalente, para reducir la exposición a ransomware. Estos destinos adicionales deben adquirirse y configurarse: con el NAS y sus dos discos solamente no se cumple la estrategia 3-2-1.</p>
+            <p>Duplicati realizará copias con versiones y cifrado. El destino externo recibirá archivos de backup independientes, no una simple sincronización de los originales. Se separarán las credenciales y se activará la autenticación multifactor. El disco USB se desconectará después de comprobar la copia y se volverá a conectar antes de la siguiente tarea.</p>
             <div class="tabla"><table>
                 <thead><tr><th>Frecuencia</th><th>Acción</th></tr></thead>
                 <tbody>
-                    <tr><td>Diariamente a las 21:30</td><td>Copia incremental de los cambios a los destinos de backup.</td></tr>
-                    <tr><td>Todos los domingos</td><td>Backup completo o sintético, si el software lo permite.</td></tr>
+                    <tr><td>Diariamente a las 21:30</td><td>Copia incremental automática al USB conectado y a OneDrive.</td></tr>
+                    <tr><td>Todos los domingos</td><td>Backup completo o sintético, según el programa y la capacidad disponible.</td></tr>
                     <tr><td>Cada mes</td><td>Prueba de recuperación de una muestra de archivos.</td></tr>
-                    <tr><td>Cada tres meses</td><td>Simulación de restauración de un conjunto completo y registro del tiempo necesario.</td></tr>
+                    <tr><td>Cada tres meses</td><td>Simulación de restauración y registro del tiempo necesario.</td></tr>
                 </tbody>
             </table></div>
-            <p>El horario diario es posterior al cierre del turno de Diseño de las 21:00. Las tareas se ejecutarán automáticamente; se revisarán los registros y las alertas de error. Se propone conservar versiones diarias durante 30 días y copias semanales durante 3 meses, sujeto a la capacidad disponible. La copia incremental guarda cambios desde la anterior; la completa contiene todos los datos, y la sintética se construye a partir de copias existentes cuando el programa lo admite.</p>
-            <p>Las copias externas estarán cifradas, con credenciales de backup separadas y protección contra modificaciones no autorizadas, preferentemente mediante versiones inmutables si el servicio lo ofrece. Las claves de recuperación se guardarán de forma segura. Se verificará periódicamente que las copias puedan restaurarse: una tarea que termina sin errores no garantiza por sí sola una recuperación correcta.</p>
+            <p>Se revisarán los registros de las tareas y se conservarán versiones según el espacio disponible. Las copias externas estarán cifradas y protegidas contra cambios no autorizados; la clave de recuperación se guardará en un lugar seguro. Las pruebas comprobarán que los archivos puedan recuperarse.</p>
         </section>
         <section id="seguridad">
             <h2>14. Seguridad informática</h2>
@@ -281,8 +296,8 @@
                 <li><strong>Antivirus:</strong> Microsoft Defender activo y actualizado en las computadoras para detectar programas maliciosos.</li>
                 <li><strong>Cuentas individuales:</strong> cada empleado tendrá su propio usuario y contraseña; no se compartirán credenciales y se usarán cuentas sin privilegios de administrador para el trabajo diario.</li>
                 <li><strong>Permisos:</strong> cada persona accederá únicamente a las carpetas necesarias; solo los responsables podrán modificar la configuración de red y backups.</li>
-                <li><strong>Actualizaciones:</strong> sistemas operativos, programas, NAS y equipos de red se mantendrán actualizados, coordinando reinicios fuera de los turnos.</li>
-                <li><strong>Wi-Fi para invitados:</strong> tendrá una red separada, con acceso únicamente a Internet y sin acceso a PC, impresora, NAS o administración de equipos.</li>
+                <li><strong>Actualizaciones:</strong> sistemas operativos, programas y equipos de red se mantendrán actualizados, coordinando reinicios fuera de los turnos.</li>
+                <li><strong>Wi-Fi para invitados:</strong> tendrá una red separada, con acceso únicamente a Internet y sin acceso a PC, impresora, equipo de archivos o administración de equipos.</li>
             </ul>
             <h3>Segmentación mediante VLAN</h3>
             <p>Una VLAN es una red local virtual: permite separar grupos de dispositivos sobre infraestructura física compartida. Cada VLAN tendrá una subred IP diferente. El router será su puerta de enlace y aplicará las reglas que autorizan o impiden la comunicación. La segmentación organiza el tráfico y limita el acceso entre sectores; una VLAN sola no reemplaza al firewall.</p>
@@ -292,17 +307,18 @@
                     <tr><td>Dispositivos (VLAN 10)</td><td>192.168.10.0/24</td></tr>
                     <tr><td>Diseño (VLAN 20)</td><td>192.168.20.0/24</td></tr>
                     <tr><td>Administración (VLAN 30)</td><td>192.168.30.0/24</td></tr>
-                    <tr><td>Servidores y equipos de red (VLAN 40)</td><td>192.168.40.0/24</td></tr>
+                    <tr><td>Gestión de equipos de red (VLAN 40)</td><td>192.168.40.0/24</td></tr>
                     <tr><td>Invitados (VLAN 50)</td><td>192.168.50.0/24</td></tr>
                 </tbody>
             </table></div>
-            <p>Se propone usar la dirección .1 de cada subred como puerta de enlace, asignación DHCP para puestos y móviles y direcciones reservadas para NAS, switches, AP e impresora. La dirección terminada en .0 identifica la red y no se asigna a una computadora. La impresora estará en Administración con acceso autorizado desde los sectores que lo necesiten.</p>
-            <p>Se bloqueará por defecto la comunicación entre sectores y se permitirán servicios concretos, como acceso a carpetas del NAS e impresión. Solo una cuenta y un equipo autorizados podrán administrar los dispositivos; compartir subred con el NAS no concede permiso para configurar los switches. Los permisos del NAS seguirán controlando el acceso a los archivos.</p>
+            <p>Se propone usar la dirección .1 de cada subred como puerta de enlace, asignación DHCP para puestos y móviles y direcciones reservadas para equipo de archivos, switches, AP e impresora. La dirección terminada en .0 identifica la red y no se asigna a una computadora. La impresora estará en Administración con acceso autorizado desde los sectores que lo necesiten.</p>
+            <p>Se bloqueará por defecto la comunicación entre sectores y se permitirán servicios concretos, como acceso a carpetas del equipo de archivos e impresión. Solo una cuenta y un equipo autorizados podrán administrar los dispositivos; el equipo de archivos estará en la VLAN 10 y la gestión de switches en la VLAN 40. Los permisos del equipo de archivos seguirán controlando el acceso a los archivos.</p>
+            <p>Los AP TL-WA801ND usarán Multi-SSID con VLAN para separar invitados. Se comprobarán la versión de hardware y el soporte de etiquetado del modelo entregado antes de comprar.</p>
         </section>
         <section id="conclusion">
             <h2>15. Conclusión</h2>
-            <p>La estrella extendida permite organizar el cableado y conectar correctamente los tres pisos, con posibilidad de ampliar la red. Se proponen once computadoras para catorce empleados distribuidos en turnos, reservando equipos más potentes para Diseño y puestos de oficina para las otras tareas.</p>
-            <p>El NAS permitirá compartir archivos de forma controlada, mientras que las cuentas individuales, los permisos, el firewall y la segmentación aportarán seguridad. Los backups independientes reducirán el riesgo de pérdida de información. La propuesta resulta adecuada para la empresa, siempre que antes de comprar se midan los recorridos, se confirmen los modelos y la compatibilidad VLAN y se coticen las licencias y los destinos adicionales de backup.</p>
+            <p>La estrella extendida conecta las tres plantas y permite ampliar la red. Once computadoras cubren los puestos de catorce empleados por turnos. Diseño utilizará Ryzen 5 con gráficos integrados y 8 GB de RAM para portadas sencillas. Las carpetas compartidas, los permisos, el firewall y las VLAN organizarán el acceso a la información; las copias locales y externas reducirán el riesgo de pérdida de archivos.</p>
+            <p>El presupuesto de $14.884.497,46 incluye materiales, mano de obra, el primer año de Photoshop y Office web, una reserva impositiva e imprevistos, dentro del límite de quince millones de pesos.</p>
         </section>
     </main>
     <footer>
