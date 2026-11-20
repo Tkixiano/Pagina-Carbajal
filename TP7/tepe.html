@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Un mensaje entre dos computadoras: encapsulación y desencapsulación explicadas con las siete capas del modelo OSI.">
+  <title>Transferencia de datos en el modelo OSI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="portada">
+    <div class="contenedor">
+      <p class="etiqueta">REDES INFORMÁTICAS · EJEMPLO PASO A PASO</p>
+      <h1>Transferencia de datos en el modelo OSI</h1>
+      <p class="introduccion">Un mensaje, siete capas y dos computadoras. Seguí qué se agrega al enviar los datos y qué se retira para recuperar el texto original.</p>
+      <nav aria-label="Secciones de la página">
+        <a href="#ejemplo">El ejemplo</a><a href="#recorrido">Las siete capas</a><a href="#encapsulacion">Encapsulación</a><a href="#recepcion">Desencapsulación</a><a href="#resumen">Tabla de capas</a>
+      </nav>
+    </div>
+  </header>
+  <main class="contenedor">
+    <section aria-labelledby="modelo">
+      <h2 id="modelo">Una guía para entender la comunicación</h2>
+      <p>El <strong>modelo OSI</strong> es un modelo conceptual de referencia que organiza la comunicación en siete capas. Cada una representa una función: desde el programa que usa una persona hasta las señales que viajan por un cable.</p>
+      <p>En este ejemplo se utiliza la arquitectura <strong>TCP/IP, sobre Ethernet</strong>. Las capas OSI ayudan a explicar sus funciones; no son siete protocolos separados ni siete cabeceras obligatorias.</p>
+    </section>
+
+    <section id="ejemplo" aria-labelledby="titulo-ejemplo">
+      <p class="etiqueta">EL PUNTO DE PARTIDA</p>
+      <h2 id="titulo-ejemplo">De una computadora a otra</h2>
+      <div class="ejemplo-equipos">
+        <article class="equipo"><h3>Computadora A · Emisor</h3><p>Una persona escribe en un programa:</p><p class="mensaje-original">Hola, ¿cómo estás?</p><p>El programa envía el texto al servicio de la computadora B.</p></article>
+        <article class="equipo"><h3>Computadora B · Receptor</h3><p>El programa recibe e interpreta los datos:</p><p class="mensaje-original">Hola, ¿cómo estás?</p><p>El texto recibido coincide con el mensaje original.</p></article>
+      </div>
+      <p>Los equipos están en la misma red local Ethernet. Suponemos una conexión TCP establecida, que el texto cabe en un segmento TCP y que no hay fragmentación IP.</p>
+      <div class="tabla-scroll" tabindex="0" role="region" aria-label="Datos de la comunicación; desplazamiento horizontal si es necesario">
+        <table>
+          <caption>Direcciones y puertos de ejemplo</caption>
+          <thead><tr><th scope="col">Elemento</th><th scope="col">Valor</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">IP del emisor</th><td>192.168.1.10</td></tr>
+            <tr><th scope="row">IP del receptor</th><td>192.168.1.20</td></tr>
+            <tr><th scope="row">MAC del emisor</th><td><code>AA:BB:CC:DD:EE:01</code></td></tr>
+            <tr><th scope="row">MAC del receptor</th><td><code>AA:BB:CC:DD:EE:02</code></td></tr>
+            <tr><th scope="row">Puerto de origen</th><td>50000</td></tr>
+            <tr><th scope="row">Puerto de destino</th><td>8080</td></tr>
+            <tr><th scope="row">Protocolo de transporte</th><td>TCP</td></tr>
+            <tr><th scope="row">Medio de transmisión</th><td>Cable Ethernet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="recorrido" aria-labelledby="titulo-recorrido">
+      <p class="etiqueta">ENCAPSULACIÓN Y DESENCAPSULACIÓN</p>
+      <h2 id="titulo-recorrido">El recorrido por las siete capas</h2>
+      <p>Leé primero la columna A de arriba hacia abajo. Luego seguí el cable hasta el inicio de la columna B y leela también de arriba hacia abajo: el receptor recorre las capas en orden inverso.</p>
+      <div class="columnas">
+        <article class="pila" aria-labelledby="emisor">
+          <h3 id="emisor">Computadora A — Emisor</h3><p class="direccion">↓ Encapsulación · de la capa 7 a la 1</p>
+          <section class="capa capa7"><h4>7 · Aplicación</h4><p>El programa genera los datos del mensaje escrito por el usuario.</p><div class="bloques"><span class="dato">Hola, ¿cómo estás?</span></div><p class="unidad">Unidad: datos</p></section>
+          <section class="capa capa6"><h4>6 · Presentación</h4><p>El texto se representa con <strong>UTF-8</strong>, una codificación que ambos extremos pueden interpretar. Codificar no es cifrar.</p><p class="estado">[Texto codificado en UTF-8]</p><p>No siempre se agrega una cabecera independiente.</p><p class="unidad">Unidad: datos</p></section>
+          <section class="capa capa5"><h4>5 · Sesión</h4><p>Representa las funciones de establecimiento, mantenimiento y finalización de una sesión de comunicación, cuando corresponda.</p><p class="estado">[Comunicación o sesión gestionada]</p><p>No agrega una cabecera de sesión obligatoria. En TCP/IP estas funciones pueden estar integradas en la aplicación.</p><p class="unidad">Unidad: datos</p></section>
+          <section class="capa capa4"><h4>4 · Transporte</h4><p><strong>TCP</strong> organiza el transporte de los datos. Los puertos identifican los extremos de la comunicación: <strong>origen 50000</strong> y <strong>destino 8080</strong>.</p><div class="bloques"><span class="tcp">Cabecera TCP</span><span class="dato">Datos</span></div><p class="unidad">Unidad: segmento TCP</p></section>
+          <section class="capa capa3"><h4>3 · Red</h4><p><strong>IPv4</strong> agrega las direcciones IP: <strong>origen 192.168.1.10</strong> y <strong>destino 192.168.1.20</strong>.</p><div class="bloques"><span class="ip">Cabecera IP</span><span class="tcp">TCP</span><span class="dato">Datos</span></div><p class="unidad">Unidad: paquete IP</p></section>
+          <section class="capa capa2"><h4>2 · Enlace de datos</h4><p><strong>Ethernet</strong> prepara la entrega dentro de la red local. MAC origen: <code>AA:BB:CC:DD:EE:01</code>; MAC destino: <code>AA:BB:CC:DD:EE:02</code>. Añade una cabecera y un tráiler <strong>FCS</strong> para detectar errores.</p><div class="bloques"><span class="ethernet">Ethernet</span><span class="ip">IP</span><span class="tcp">TCP</span><span class="dato">Datos</span><span class="fcs">FCS</span></div><p class="unidad">Unidad: trama Ethernet</p></section>
+          <section class="capa capa1"><h4>1 · Física</h4><p>La trama se transmite como señales físicas que representan bits a través del cable Ethernet. No se añade otra cabecera IP, TCP ni Ethernet.</p><p class="bits"><code>01001000 01101111 01101100 01100001 …</code></p><p>Fragmento ilustrativo: bits de «Hola», parte de los datos; no representa toda la trama ni la codificación de las señales del cable.</p><p class="unidad">Unidad: bits</p></section>
+        </article>
+        <div class="cable" aria-label="Cable Ethernet que conecta la salida física de A con la entrada física de B"><strong>A · capa 1 → B · capa 1</strong><span> Cable Ethernet </span><code>01001000 01101111 … →</code><span>Señales que representan bits</span></div>
+        <article class="pila" aria-labelledby="receptor">
+          <h3 id="receptor">Computadora B — Receptor</h3><p class="direccion">↓ Desencapsulación · de la capa 1 a la 7</p>
+          <section class="capa capa1"><h4>1 · Física</h4><p>Recibe las señales del cable Ethernet y recupera los bits que representan la trama.</p><p class="bits"><code>01001000 01101111 01101100 01100001 …</code></p><p>Es el mismo fragmento ilustrativo del mensaje transmitido.</p><p class="unidad">Unidad: bits</p></section>
+          <section class="capa capa2"><h4>2 · Enlace de datos</h4><p>Reconstruye la trama, comprueba la MAC de destino <code>AA:BB:CC:DD:EE:02</code> y verifica el FCS. Si la trama es válida, retira la cabecera Ethernet y el FCS.</p><div class="bloques"><span class="ip">IP</span><span class="tcp">TCP</span><span class="dato">Datos</span></div><p class="unidad">Procesa una trama Ethernet → entrega un paquete IP</p></section>
+          <section class="capa capa3"><h4>3 · Red</h4><p>Procesa la cabecera IPv4 y comprueba el destino <strong>192.168.1.20</strong>. Retira la cabecera IP y entrega su contenido a TCP.</p><div class="bloques"><span class="tcp">TCP</span><span class="dato">Datos</span></div><p class="unidad">Procesa un paquete IP → entrega un segmento TCP</p></section>
+          <section class="capa capa4"><h4>4 · Transporte</h4><p>TCP procesa el segmento de <strong>50000 → 8080</strong>, verifica y ordena los datos y los entrega al programa asociado a esa conexión. La cabecera TCP no se entrega como parte del texto.</p><div class="bloques"><span class="dato">Datos</span></div><p class="unidad">Procesa un segmento TCP → entrega datos</p></section>
+          <section class="capa capa5"><h4>5 · Sesión</h4><p>Se gestiona la sesión o comunicación cuando corresponde. En el ejemplo no hay una cabecera OSI de sesión independiente que quitar.</p><p class="estado">[Comunicación o sesión gestionada]</p><p class="unidad">Unidad: datos</p></section>
+          <section class="capa capa6"><h4>6 · Presentación</h4><p>Interpreta los bytes mediante UTF-8 para recuperar los caracteres del texto, incluidos «¿», «ó» y «á».</p><p class="estado">[Texto interpretado en UTF-8]</p><p class="unidad">Unidad: datos</p></section>
+          <section class="capa capa7"><h4>7 · Aplicación</h4><p>El programa muestra el mensaje original a la persona que lo recibe.</p><p class="mensaje-original">Hola, ¿cómo estás?</p><p class="unidad">Unidad: datos</p></section>
+        </article>
+      </div>
+    </section>
+
+    <section id="encapsulacion" aria-labelledby="titulo-formacion">
+      <p class="etiqueta">SE AGREGA INFORMACIÓN ALREDEDOR DE LOS DATOS</p>
+      <h2 id="titulo-formacion">¿Cómo se va formando el mensaje?</h2>
+      <p>El bloque verde conserva el mismo texto codificado en UTF-8. Cada protocolo incorpora información para cumplir su tarea.</p>
+      <figure class="proceso">
+        <div class="paso"><h3>Datos de aplicación</h3><div class="bloques"><span class="dato">MENSAJE · Hola, ¿cómo estás?</span></div></div>
+        <p class="flecha">↓ Se agrega la cabecera TCP</p>
+        <div class="paso"><h3>Segmento TCP</h3><div class="bloques"><span class="tcp">TCP · 50000 → 8080</span><span class="dato">MENSAJE · Hola, ¿cómo estás?</span></div></div>
+        <p class="flecha">↓ Se agrega la cabecera IPv4</p>
+        <div class="paso"><h3>Paquete IP</h3><div class="bloques"><span class="ip">IP</span><span class="tcp">TCP · 50000 → 8080</span><span class="dato">MENSAJE · Hola, ¿cómo estás?</span></div></div>
+        <p class="flecha">↓ Se agregan la cabecera Ethernet y el FCS</p>
+        <div class="paso"><h3>Trama Ethernet · estructura completa del ejemplo</h3><div class="bloques"><span class="ethernet">ETHERNET</span><span class="ip">IP</span><span class="tcp">TCP · 50000 → 8080</span><span class="dato">MENSAJE · Hola, ¿cómo estás?</span><span class="fcs">FCS</span></div></div>
+        <figcaption>Orden de lectura: de izquierda a derecha. Los tamaños de los bloques no representan la cantidad real de bytes.</figcaption>
+      </figure>
+      <dl class="leyenda">
+        <div><dt><span class="dato">MENSAJE</span></dt><dd>Los datos originales: «Hola, ¿cómo estás?» codificado en UTF-8.</dd></div>
+        <div><dt><span class="tcp">TCP</span></dt><dd>Cabecera de transporte: puertos 50000 → 8080 y otros campos, como secuencia y control.</dd></div>
+        <div><dt><span class="ip">IP</span></dt><dd>Cabecera IPv4: origen 192.168.1.10, destino 192.168.1.20 y otros campos.</dd></div>
+        <div><dt><span class="ethernet">ETHERNET</span></dt><dd>Cabecera del enlace local: MAC origen AA:BB:CC:DD:EE:01 y MAC destino AA:BB:CC:DD:EE:02, entre otros campos.</dd></div>
+        <div><dt><span class="fcs">FCS</span></dt><dd>Tráiler al final de la trama. Permite detectar errores; no corrige por sí mismo los datos.</dd></div>
+      </dl>
+      <p class="nota">Esquema simplificado: se muestran las estructuras y campos principales para entender la encapsulación. Se omiten detalles de transmisión como el preámbulo, el delimitador y el posible relleno Ethernet. El FCS se calcula sobre la cabecera Ethernet y su contenido, incluido ese relleno si existe.</p>
+    </section>
+
+    <section id="recepcion" aria-labelledby="titulo-recepcion">
+      <p class="etiqueta">SE RETIRA LA INFORMACIÓN DE CADA PROTOCOLO</p>
+      <h2 id="titulo-recepcion">¿Qué sucede cuando llega el mensaje?</h2>
+      <p>La Computadora B recibe las señales y recupera los bits. Después, cada protocolo procesa su información y entrega el contenido a la siguiente capa.</p>
+      <figure class="proceso">
+        <div class="paso"><h3>Enlace · trama recibida</h3><div class="bloques"><span class="ethernet">ETHERNET</span><span class="ip">IP</span><span class="tcp">TCP</span><span class="dato">MENSAJE</span><span class="fcs">FCS</span></div></div>
+        <p class="flecha">↓ Ethernet verifica la trama y retira su cabecera y el FCS</p>
+        <div class="paso"><h3>Red · paquete IP</h3><div class="bloques"><span class="ip">IP</span><span class="tcp">TCP</span><span class="dato">MENSAJE</span></div></div>
+        <p class="flecha">↓ IPv4 procesa y retira su cabecera</p>
+        <div class="paso"><h3>Transporte · segmento TCP</h3><div class="bloques"><span class="tcp">TCP</span><span class="dato">MENSAJE</span></div></div>
+        <p class="flecha">↓ TCP procesa el segmento y entrega los datos al programa</p>
+        <div class="paso"><h3>Datos para la aplicación</h3><div class="bloques"><span class="dato">MENSAJE · Hola, ¿cómo estás?</span></div></div>
+        <figcaption>La gestión de sesión y la interpretación UTF-8 permiten que el programa muestre el texto original. No se inventan cabeceras independientes para esas funciones.</figcaption>
+      </figure>
+    </section>
+
+    <section id="resumen" aria-labelledby="titulo-tabla">
+      <h2 id="titulo-tabla">Las siete capas, de un vistazo</h2>
+      <div class="tabla-scroll" tabindex="0" role="region" aria-label="Tabla comparativa de las capas; desplazamiento horizontal si es necesario">
+        <table class="tabla-capas">
+          <caption>Funciones del modelo OSI aplicadas a nuestro ejemplo</caption>
+          <thead><tr><th scope="col">Número</th><th scope="col">Nombre</th><th scope="col">Función principal</th><th scope="col">Información o procesamiento del ejemplo</th><th scope="col">Unidad de datos</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">7</th><td>Aplicación</td><td>Servicios de comunicación para los programas.</td><td>Generar y mostrar «Hola, ¿cómo estás?».</td><td>Datos</td></tr>
+            <tr><th scope="row">6</th><td>Presentación</td><td>Representar e interpretar los datos.</td><td>Codificar y decodificar el texto en UTF-8.</td><td>Datos</td></tr>
+            <tr><th scope="row">5</th><td>Sesión</td><td>Gestionar sesiones de comunicación.</td><td>Establecimiento, mantenimiento y finalización cuando corresponda.</td><td>Datos</td></tr>
+            <tr><th scope="row">4</th><td>Transporte</td><td>Comunicación entre extremos identificados por puertos.</td><td>TCP; puerto 50000 → 8080.</td><td>Segmento TCP</td></tr>
+            <tr><th scope="row">3</th><td>Red</td><td>Direccionamiento lógico y envío de paquetes entre redes.</td><td>IPv4; 192.168.1.10 → 192.168.1.20. Aquí ambos equipos están en la misma red.</td><td>Paquete IP</td></tr>
+            <tr><th scope="row">2</th><td>Enlace de datos</td><td>Entrega local de tramas y detección de errores.</td><td>Ethernet; AA:BB:CC:DD:EE:01 → AA:BB:CC:DD:EE:02; FCS.</td><td>Trama Ethernet</td></tr>
+            <tr><th scope="row">1</th><td>Física</td><td>Transmitir y recibir señales que representan bits.</td><td>Señales a través del cable Ethernet.</td><td>Bits</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion" aria-labelledby="titulo-final">
+      <h2 id="titulo-final">El mensaje se conserva. Su envoltura cambia.</h2>
+      <p>Al enviar, los datos quedan dentro de un <strong>segmento TCP</strong>, luego de un <strong>paquete IP</strong> y finalmente de una <strong>trama Ethernet</strong>, que viaja mediante señales que representan bits. Al recibir, se procesa y retira cada encapsulación hasta recuperar <strong>«Hola, ¿cómo estás?»</strong>.</p>
+      <p><strong>Puertos:</strong> extremos de la comunicación. <strong>IP:</strong> direccionamiento de red. <strong>MAC:</strong> entrega en el enlace local.</p>
+      <a href="#">Volver al inicio</a>
+      <a href="../index.html">VOLVER A LA BIBLIOTECA</a>
+    </section>
+  </main>
+  </body>
+</html>

@@ -104,26 +104,32 @@
         <section id="distribucion">
             <h2>6. Distribución física de los dispositivos</h2>
             <h3>Planta baja: Dispositivos y rack principal</h3>
-            <p>Se instalará una PC Athlon 3000G con 8 GB de RAM, SSD de 240 GB, monitor Solarmax Full HD de 21,5 pulgadas, teclado y mouse. Los tres empleados de planta baja compartirán esta computadora mediante cuentas individuales y uso alternado. También alojará las carpetas compartidas, con permisos individuales, y permanecerá encendida hasta completar los backups.</p>
-            <p>Habrá un switch TP-Link TL-SG108E de ocho puertos Gigabit y un AP TP-Link TL-WA801ND. El rack GLC de 12U alojará el router MikroTik hEX S (2025), el switch central TL-SG108PE y los patch panels. La UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V, protegerá el equipo de archivos y los equipos centrales, con la distribución eléctrica dimensionada por el instalador. El disco externo Toshiba de 1 TB se conectará al equipo de archivos para las copias.</p>
-            <p>El rack estará en un lugar protegido, ventilado y con acceso restringido, cerca del ingreso de Internet. La UPS permite afrontar cortes breves y un apagado ordenado; no se dimensiona para alimentar las nueve PC.</p>
+            <p>Se instalará una PC Athlon 3000G con 8 GB de RAM, SSD de 240 GB, monitor Solarmax SX22F Full HD de 22 pulgadas, teclado y mouse. Los tres empleados de planta baja compartirán esta computadora mediante cuentas individuales y uso alternado. También alojará las carpetas compartidas, con permisos individuales, y permanecerá encendida hasta completar los backups.</p>
+            <p>Habrá un switch TP-Link TL-SG108E de ocho puertos Gigabit y un AP TP-Link TL-WA801ND. El rack principal será un GLC abierto de pie, de 45U, 19 pulgadas y 2 metros de alto, con una base de 60 × 60 cm. Alojará el router MikroTik hEX S (2025), el switch central TL-SG108PE y el switch de PB sobre una bandeja adicional. La UPS se ubicará en la parte inferior, con apoyo estable y ventilación. El rack se fijará según las indicaciones del fabricante. La UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V, protegerá el equipo de archivos y los equipos centrales, con la distribución eléctrica dimensionada por el instalador. El disco externo Toshiba de 1 TB se conectará al equipo de archivos para las copias.</p>
+            <p>El rack estará en un lugar protegido, ventilado y con acceso restringido, cerca del ingreso de Internet. La UPS permite afrontar cortes breves y un apagado manual ordenado; no se dimensiona para alimentar las nueve PC.</p>
             <h3>Primer piso: Diseño gráfico</h3>
-            <p>Se instalarán cinco PC con <strong>Ryzen 5 3400G, 8 GB de RAM y SSD de 240 GB, sin tarjeta gráfica dedicada</strong>, con gráficos Radeon integrados, teclado y mouse. Cada puesto tendrá un monitor Solarmax Full HD de 21,5 pulgadas. Se instalarán un switch TL-SG108E y un AP TL-WA801ND.</p>
+            <p>Se instalarán cinco PC con <strong>Ryzen 5 3400G, 8 GB de RAM y SSD de 240 GB, sin tarjeta gráfica dedicada</strong>, con gráficos Radeon integrados, teclado y mouse. Cada puesto tendrá un monitor Solarmax SX22F Full HD de 22 pulgadas. Se instalarán un switch TL-SG108E y un AP TL-WA801ND. El switch y uno de los patch panels estarán en un rack mural tra-color de 4U y 400 mm de profundidad, con la bandeja incluida.</p>
             <h3>Segundo piso: Administración</h3>
-            <p>Se instalarán tres PC Athlon 3000G de 8 GB y SSD de 240 GB con gráficos integrados, monitor, teclado y mouse; un switch TL-SG108E, un AP TL-WA801ND y una impresora HP DeskJet Ink Advantage 2875 Wi-Fi usada.</p>
+            <p>Se instalarán tres PC Athlon 3000G de 8 GB y SSD de 240 GB con gráficos integrados, monitor, teclado y mouse; un switch TL-SG108E, un AP TL-WA801ND y una impresora HP DeskJet Ink Advantage 2875 Wi-Fi usada. El switch y el segundo patch panel estarán en otro rack mural tra-color de 4U con su bandeja incluida.</p>
             <h3>Cableado y alimentación</h3>
             <p>Las nueve PC y los enlaces entre switches usarán UTP Cat5e de cobre, apto para Gigabit Ethernet hasta 100 metros por canal, incluidos los patch cords. Las tomas, patch panels y patch cords Cat6 son compatibles, pero la categoría del conjunto queda limitada por el Cat5e.</p>
-            <p>Las canaletas protegerán el cableado, separado del tendido eléctrico. Los AP se ubicarán en posiciones centrales y elevadas. El Wi-Fi N300 tiene un puerto Ethernet de 100 Mbps; los puestos cableados conservarán enlaces Gigabit. Los AP usarán sus fuentes e inyectores PoE pasivos correspondientes.</p>
-            <p>Ocupación de puertos: PB, 3 (1 PC, AP y enlace); P1, 7 (5 PC, AP y enlace); P2, 5 (3 PC, AP y enlace), con impresora por Wi-Fi. El central usará 4 puertos: router y tres enlaces de planta. El router se alimentará por un puerto PoE compatible del switch central. Los switches TL-SG108E y TL-SG108PE permiten configurar VLAN; se verificará la versión exacta antes de comprar.</p>
+            <p>Las canaletas protegerán el cableado, separado del tendido eléctrico. Los AP se ubicarán en posiciones centrales y elevadas. El Wi-Fi N300 tiene un puerto Ethernet de 100 Mbps; los puestos cableados conservarán enlaces Gigabit. Los AP usarán sus fuentes e inyectores PoE pasivos correspondientes, con un recorrido máximo de 30 metros entre inyector y AP.</p>
+            <p>Ocupación de puertos: PB, 3 (1 PC, AP y enlace); P1, 7 (5 PC, AP y enlace); P2, 5 (3 PC, AP y enlace), con impresora por Wi-Fi. El central usará 4 puertos: router y tres enlaces de planta. El puerto ether1 del router recibirá alimentación PoE del switch central y transportará las VLAN de la red interna. El puerto ether2 se configurará como WAN y se conectará al módem u ONT entregado por el proveedor de Internet. Los switches TL-SG108E y TL-SG108PE permiten configurar VLAN; se verificará la versión exacta antes de comprar.</p>
+            <p>Se tenderán 14 enlaces permanentes: nueve para PC, tres para AP y dos entre plantas. Los patch panels ocuparán siete puertos en P1 y cinco en P2. Se utilizarán 16 rosetas, incluidas las terminaciones de ambos extremos de los enlaces locales de PB, y quedarán cuatro de repuesto. Se usarán 34 patch cords: 18 para PC, nueve para AP e inyectores, cuatro para los enlaces entre plantas y tres para switch PB, router y módem u ONT. Quedarán dos de repuesto.</p>
+            <h3>Instalación eléctrica y fijaciones</h3>
+            <p>Se presupuestan tres térmicas bipolares, una por planta como referencia, un disyuntor diferencial y tres rollos de 50 metros de conductor de cobre para fase, neutro y puesta a tierra. Habrá trece tomacorrientes dobles completos: nueve para los puestos, tres para los racks y uno para la impresora. Cada rack tendrá una zapatilla de seis tomas con tierra y limitador térmico, sin conectar zapatillas en cadena.</p>
+            <p>El electricista verificará las cargas, las secciones, las protecciones y su coordinación antes de instalar. Los valores de 16 A, 25 A y 2,5 mm² son referencias para presupuestar, no un dimensionamiento definitivo. Este alcance depende de contar con un tablero existente con riel DIN y espacio suficiente, cañerías eléctricas aprovechables y puesta a tierra en condiciones; no incluye construir esos elementos desde cero.</p>
+            <p>Las fijaciones incluyen tornillos, tarugos, tirafondos, arandelas y tuercas jaula. Se elegirán los anclajes según la pared y el peso de cada rack. Los precintos se colocarán sin apretar ni deformar el cable UTP. Se agregarán uniones, derivaciones T y tapas finales al cablecanal.</p>
+            <p>Los tramos de caño PVC se cortarán como manguitos para proteger los pasos por paredes y pisos. Los pasacables de goma protegerán los bordes de entrada a los gabinetes. El sellado de las penetraciones se resolverá con un sistema cortafuego compatible con el muro, el piso y los cables; el cartucho presupuestado es una provisión inicial que se verificará al medir los pasos.</p>
         </section>
         <section id="componentes">
-            <h2>7. Componentes y dispositivos necesarios</h2>
+            <h2>7. Componentes y materiales necesarios</h2>
             <div class="tabla"><table>
                 <thead><tr><th>Componente</th><th>Cantidad</th></tr></thead>
                 <tbody>
                     <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>4</td></tr>
                     <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td></tr>
-                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>9</td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 22 pulgadas</td><td>9</td></tr>
                     <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td></tr>
                     <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td></tr>
                     <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td></tr>
@@ -132,27 +138,48 @@
                     <tr><td>Patch cord Vention Cat6 de 1 metro</td><td>36</td></tr>
                     <tr><td>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada)</td><td>1</td></tr>
                     <tr><td>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup</td><td>1</td></tr>
-                    <tr><td>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos</td><td>1</td></tr>
                     <tr><td>Patch panel Cat6 de 24 puertos con jacks</td><td>2</td></tr>
                     <tr><td>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total)</td><td>2</td></tr>
                     <tr><td>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V</td><td>1</td></tr>
-                    <tr><td>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total)</td><td>30</td></tr>
+                    <tr><td>Pack de cablecanal Kalop 40 × 30 mm, 6 tiras de 2 m (12 m por pack; 60 m en total)</td><td>5</td></tr>
                     <tr><td>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total)</td><td>4</td></tr>
+                    <tr><td>Rack principal de pie GLC 45U, 19 pulgadas, 2 m de alto, 60 × 60 cm</td><td>1</td></tr>
+                    <tr><td>Rack mural tra-color 4U de 400 mm, con bandeja (P1 y P2)</td><td>2</td></tr>
+                    <tr><td>Térmica bipolar BAW de 16 A, referencia para circuitos por planta</td><td>3</td></tr>
+                    <tr><td>Disyuntor diferencial Tosunlux tipo A, 2 × 25 A, 30 mA, referencia</td><td>1</td></tr>
+                    <tr><td>Cable unipolar de cobre de 2,5 mm², rollo de 50 m (fase, neutro y tierra)</td><td>3</td></tr>
+                    <tr><td>Tomacorriente doble con tierra Jeluz Verona, caja y tapa para aplicar</td><td>13</td></tr>
+                    <tr><td>Zapatilla Kalop de 6 tomas IRAM, cable de 1,5 m y limitador térmico</td><td>3</td></tr>
+                    <tr><td>Pack de 50 tornillos M6 y 50 tuercas jaula para rack</td><td>1</td></tr>
+                    <tr><td>Unión recta Kalop para cablecanal de 40 × 30 mm</td><td>10</td></tr>
+                    <tr><td>Derivación T Kalop para cablecanal de 40 × 30 mm</td><td>4</td></tr>
+                    <tr><td>Pack de 10 tapas finales Kalop para cablecanal de 40 × 30 mm</td><td>1</td></tr>
+                    <tr><td>Pack de 20 pasacables de goma Quiwi GM6A, diámetro interior 18 mm</td><td>1</td></tr>
+                    <tr><td>Pack de 100 tornillos Fix 4 × 40 mm y 100 tarugos N.º 6 para canaletas</td><td>1</td></tr>
+                    <tr><td>Pack de 50 tarugos de 10 mm, tirafondos y arandelas para fijaciones</td><td>1</td></tr>
+                    <tr><td>Bandeja adicional Vision Tech para rack de 19 pulgadas, 490 × 260 mm, carga máxima 10 kg</td><td>1</td></tr>
+                    <tr><td>Pack de 100 precintos plásticos de 3,6 × 200 mm</td><td>1</td></tr>
+                    <tr><td>Sellador cortafuego Promaseal A, cartucho de 310 ml</td><td>1</td></tr>
+                    <tr><td>Caño PVC rígido Genrod de 40 mm, tira de 3 m para manguitos pasamuros</td><td>1</td></tr>
                 </tbody>
             </table></div>
             <h3>Función de los componentes</h3>
             <ul>
-                <li><strong>PC y monitores:</strong> permiten trabajar; los Ryzen 5 se destinan al diseño básico y los Athlon a tareas de oficina. Los nueve equipos incluyen teclado y mouse.</li>
-                <li><strong>Router:</strong> conecta con Internet, administra las subredes y aplica el firewall.</li>
-                <li><strong>Switches:</strong> el central une las plantas y los secundarios conectan los puestos de cada piso.</li>
-                <li><strong>Puntos de acceso:</strong> conectan móviles y separan las redes inalámbricas mediante SSID y VLAN compatibles.</li>
-                <li><strong>Equipo de archivos y disco externo:</strong> una PC de PB comparte documentos; el disco USB guarda copias independientes.</li>
-                <li><strong>Impresora:</strong> imprime y digitaliza documentos.</li>
-                <li><strong>Bobina, patch cords, patch panels y tomas RJ45:</strong> forman y ordenan los enlaces de cobre.</li>
-                <li><strong>Rack, bandeja, canaletas y curvas:</strong> alojan los equipos y protegen el tendido.</li>
-                <li><strong>UPS:</strong> aporta energía temporal para los equipos críticos.</li>
+                <li><strong>PC y monitores:</strong> nueve puestos de trabajo; los Ryzen 5 se destinan a Diseño. Cada PC incluye teclado y mouse.</li>
+                <li><strong>Router, switches y AP:</strong> conectan las plantas, distribuyen Internet y permiten separar los sectores mediante VLAN.</li>
+                <li><strong>Disco externo:</strong> guarda backups independientes del SSD del equipo de archivos.</li>
+                <li><strong>Impresora:</strong> permite imprimir y digitalizar documentos.</li>
+                <li><strong>Cable UTP, patch cords, patch panels y rosetas:</strong> forman las conexiones de datos y ordenan sus terminaciones.</li>
+                <li><strong>Tres racks y sus bandejas:</strong> uno de pie de 2 m en PB y dos murales en P1 y P2. Las bandejas de los murales están incluidas; solo se compra por separado la del rack principal.</li>
+                <li><strong>UPS:</strong> protege los equipos críticos ante cortes breves y permite apagarlos de forma ordenada.</li>
+                <li><strong>Térmicas y disyuntor:</strong> protecciones eléctricas cuya selección final corresponde al electricista.</li>
+                <li><strong>Conductores, tomacorrientes y zapatillas:</strong> completan la alimentación eléctrica de los puestos y los equipos de red.</li>
+                <li><strong>Tornillos, tarugos, tirafondos, arandelas y tuercas jaula:</strong> fijan canaletas, racks, bandejas y paneles.</li>
+                <li><strong>Cablecanal, curvas, uniones, derivaciones y tapas:</strong> protegen los recorridos y completan sus cambios de dirección y terminaciones.</li>
+                <li><strong>Precintos:</strong> agrupan los cables sin deformarlos.</li>
+                <li><strong>Manguitos, pasacables y sellador:</strong> protegen las entradas y permiten resolver el sellado de los pasos entre plantas.</li>
             </ul>
-            <p>Se prevén 305 metros de cable, 36 patch cords, 20 tomas, 60 metros de canaleta y 20 curvas. Las cantidades y la ubicación de las terminaciones se ajustarán al medir el edificio y realizar el plano de instalación.</p>
+            <p>Se conservan 305 m de UTP, 36 patch cords, 20 rosetas y 60 m de cablecanal. Se prevén 100 juegos de tornillo y tarugo para canaletas, 50 juegos de tirafondo, tarugo y arandela para fijaciones, 50 pares de tornillo y tuerca jaula, 100 precintos, 10 uniones, 4 derivaciones T y 10 tapas finales, además de las 20 curvas ya presupuestadas. Las cantidades son provisionales hasta medir el edificio y definir el plano.</p>
         </section>
         <section id="software">
             <h2>8. Software necesario y licencias del primer año</h2>
@@ -183,53 +210,88 @@
         </section>
         <section id="materiales">
             <h2>9. Presupuesto de materiales</h2>
-            <p>Importes en pesos argentinos. Se usan los precios de referencia de las publicaciones enlazadas; la impresora seleccionada es usada.</p>
+            <p>Importes de referencia en pesos argentinos. Cada fila enlaza la publicación del componente; los precios pueden variar por vendedor, disponibilidad, variantes y forma de pago. La impresora seleccionada es usada. Los rollos de conductor eléctrico requieren confirmar los colores de fase, neutro y tierra con el vendedor.</p>
             <div class="tabla"><table>
                 <thead><tr><th>Componente</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th><th>Fuente</th></tr></thead>
                 <tbody>
                     <tr><td>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse</td><td>4</td><td class="numero">$397.999,00</td><td class="numero">$1.591.996,00</td><td><a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse</td><td>5</td><td class="numero">$523.990,00</td><td class="numero">$2.619.950,00</td><td><a href="https://www.mercadolibre.com.ar/pc-ryzen-5-completa-3400g-8-gb-240-gb-wi-fi-mouse-y-teclado-aconcawa-pc/p/MLA78236679" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
-                    <tr><td>Monitor Solarmax SX22F Full HD de 21,5 pulgadas</td><td>9</td><td class="numero">$98.900,00</td><td class="numero">$890.100,00</td><td><a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Monitor Solarmax SX22F Full HD de 22 pulgadas</td><td>9</td><td class="numero">$92.124,00</td><td class="numero">$829.116,00</td><td><a href="https://www.mercadolibre.com.ar/solarmax-sx22f-monitor-22-75hz-full-hd/p/MLA43961514?pdp_filters=item_id%3AMLA3876531186" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Router MikroTik hEX S E60iUGS (2025)</td><td>1</td><td class="numero">$127.700,00</td><td class="numero">$127.700,00</td><td><a href="https://www.mercadolibre.com.ar/mikrotik-router-hex-s-2025-e60iugs-1p-sfp-25g-5p-giga-poe/up/MLAU3474345551" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE</td><td>1</td><td class="numero">$133.759,33</td><td class="numero">$133.759,33</td><td><a href="https://www.mercadolibre.com.ar/switch-tplink-tlsg108pe-smart-gigabit-8-puertos-4-poe/up/MLAU375770224" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables</td><td>3</td><td class="numero">$84.942,00</td><td class="numero">$254.826,00</td><td><a href="https://www.mercadolibre.com.ar/switch-gigabit-tp-link-tl-sg108e-easy-smart/p/MLA2090124795?pdp_filters=item_id%3AMLA2135881509" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Access point TP-Link TL-WA801ND, Wi-Fi N300, con fuente e inyector pasivo</td><td>3</td><td class="numero">$50.000,00</td><td class="numero">$150.000,00</td><td><a href="https://www.mercadolibre.com.ar/access-point-tl-wa801nd-tp-link-inalambrico-n-300mbps-v/up/MLAU5270522565" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
-                    <tr><td>Bobina UTP Cat5e Commscope de cobre, 305 metros</td><td>1</td><td class="numero">$323.000,00</td><td class="numero">$323.000,00</td><td><a href="https://www.mercadolibre.com.ar/cable-utp-cat-5e-commscope-amp-netconnecta-rollo-305-metros-gris/p/MLA27970906" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Bobina UTP Cat5e Commscope de cobre, 305 metros</td><td>1</td><td class="numero">$299.720,00</td><td class="numero">$299.720,00</td><td><a href="https://www.mercadolibre.com.ar/cable-de-red-utp-cat5e-amp-te-commscope-100-cobre/up/MLAU218108837?pdp_filters=item_id%3AMLA1144632578" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Patch cord Vention Cat6 de 1 metro</td><td>36</td><td class="numero">$3.799,00</td><td class="numero">$136.764,00</td><td><a href="https://www.mercadolibre.com.ar/cable-de-red-vention-cat6-certificado-1-metro-premium-patch-cord-utp-rj45-ethernet-1000-mbps-250-mhz-cobre-pc-notebook-servidores-negro-ibebf/p/MLA28459512?pdp_filters=item_id%3AMLA1733505538" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada)</td><td>1</td><td class="numero">$150.000,00</td><td class="numero">$150.000,00</td><td><a href="https://www.mercadolibre.com.ar/impresora-multifuncion-hp-deskjet-ink-advantage-2875-wifi/up/MLAU5822961590" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup</td><td>1</td><td class="numero">$234.999,00</td><td class="numero">$234.999,00</td><td><a href="https://www.mercadolibre.com.ar/disco-externo-toshiba-canvio-basics-1tb-usb-30-portatil-hdtb510xk3aa-negro/p/MLA22636418" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
-                    <tr><td>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos</td><td>1</td><td class="numero">$174.896,00</td><td class="numero">$174.896,00</td><td><a href="https://www.mercadolibre.com.ar/kit-de-rack-12u-glc-ecomural12u450-con-bandeja-fija-300mm/up/MLAU3783920636" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Patch panel Cat6 de 24 puertos con jacks</td><td>2</td><td class="numero">$35.000,00</td><td class="numero">$70.000,00</td><td><a href="https://www.mercadolibre.com.ar/patchera-patch-panel-24-puertos-rj45-cat6-pkrone110-cjack/p/MLA2040255106" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total)</td><td>2</td><td class="numero">$31.075,00</td><td class="numero">$62.150,00</td><td><a href="https://www.mercadolibre.com.ar/prosoft-roseta-rj45-red-con-jack-cat6-pack-de-10-unidades-cables-cat-6/p/MLA38481926" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V</td><td>1</td><td class="numero">$116.500,00</td><td class="numero">$116.500,00</td><td><a href="https://www.mercadolibre.com.ar/ups-interactiva-hikvision-1000va-600w-ds-ups1000-r-negro/p/MLA79218598" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
-                    <tr><td>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total)</td><td>30</td><td class="numero">$9.880,50</td><td class="numero">$296.415,00</td><td><a href="https://www.mercadolibre.com.ar/cable-canal-autoadhesivo-kalop-40x30-tira-x-2-mts-pvc/up/MLAU254747460" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de cablecanal Kalop 40 × 30 mm, 6 tiras de 2 m (12 m por pack; 60 m en total)</td><td>5</td><td class="numero">$24.000,00</td><td class="numero">$120.000,00</td><td><a href="https://www.mercadolibre.com.ar/cable-canal-kalop-autoadhesivo-30x40-12mtsen-tiras-x-2m/up/MLAU404183958" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                     <tr><td>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total)</td><td>4</td><td class="numero">$11.390,00</td><td class="numero">$45.560,00</td><td><a href="https://www.mercadolibre.com.ar/accesorios-para-cablecanal-curva-40x30-kalop-x5-unidades/up/MLAU3025568873" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Rack principal de pie GLC 45U, 19 pulgadas, 2 m de alto, 60 × 60 cm</td><td>1</td><td class="numero">$607.236,00</td><td class="numero">$607.236,00</td><td><a href="https://www.mercadolibre.com.ar/rack-abierto-glc-45u-19-para-telecomunicaciones-y-servidores-800kg-negro/p/MLA49594141" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Rack mural tra-color 4U de 400 mm, con bandeja (P1 y P2)</td><td>2</td><td class="numero">$123.585,30</td><td class="numero">$247.170,60</td><td><a href="https://www.mercadolibre.com.ar/rack-mural-4u-400mm-profundidad-desarmado-bandeja-negro/p/MLA74708835" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Térmica bipolar BAW de 16 A, referencia para circuitos por planta</td><td>3</td><td class="numero">$7.738,43</td><td class="numero">$23.215,29</td><td><a href="https://www.mercadolibre.com.ar/termica-baw-interruptor-bipolar-16-amp/up/MLAU364800359" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Disyuntor diferencial Tosunlux tipo A, 2 × 25 A, 30 mA, referencia</td><td>1</td><td class="numero">$86.900,00</td><td class="numero">$86.900,00</td><td><a href="https://www.mercadolibre.com.ar/disyuntor-interruptor-diferencial-tipo-a-2x25a-30ma-tosunlux/p/MLA2095738838" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Cable unipolar de cobre de 2,5 mm², rollo de 50 m (fase, neutro y tierra)</td><td>3</td><td class="numero">$46.500,00</td><td class="numero">$139.500,00</td><td><a href="https://articulo.mercadolibre.com.ar/MLA-1128866156-cable-electrico-unipolar-25-mm-iram-2183-100-cobre-50-mts-_JM?searchVariation=174332452564" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Tomacorriente doble con tierra Jeluz Verona, caja y tapa para aplicar</td><td>13</td><td class="numero">$3.562,00</td><td class="numero">$46.306,00</td><td><a href="https://www.mercadolibre.com.ar/llave-toma-corriente-doble-exterior-enchufe-aplicar-jeluz/p/MLA23204856" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Zapatilla Kalop de 6 tomas IRAM, cable de 1,5 m y limitador térmico</td><td>3</td><td class="numero">$15.990,00</td><td class="numero">$47.970,00</td><td><a href="https://www.mercadolibre.com.ar/zapatilla-kalop-iram-6-tomas-15m-cable-limitador-termico-10a-blanca/p/MLA23435446" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 50 tornillos M6 y 50 tuercas jaula para rack</td><td>1</td><td class="numero">$26.300,00</td><td class="numero">$26.300,00</td><td><a href="https://www.mercadolibre.com.ar/tornillo-rack--tuerca-jaula-m6--50-pares/up/MLAU3451246209" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Unión recta Kalop para cablecanal de 40 × 30 mm</td><td>10</td><td class="numero">$3.700,00</td><td class="numero">$37.000,00</td><td><a href="https://www.mercadolibre.com.ar/acople-recto-union-cable-canal-40x30-kalop/up/MLAU3705787688?pdp_filters=item_id%3AMLA1624939233" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Derivación T Kalop para cablecanal de 40 × 30 mm</td><td>4</td><td class="numero">$3.243,00</td><td class="numero">$12.972,00</td><td><a href="https://www.mercadolibre.com.ar/accesorio-cablecanal-40x30mm-derivacion-t-kalop-blanco/p/MLA2115959461?pdp_filters=item_id%3AMLA1644182351" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 10 tapas finales Kalop para cablecanal de 40 × 30 mm</td><td>1</td><td class="numero">$18.440,00</td><td class="numero">$18.440,00</td><td><a href="https://www.mercadolibre.com.ar/accesorio-cablecanal-40x30mm-terminal-kalop-pack-x-10/up/MLAU3370828041?pdp_filters=item_id%3AMLA1516343685" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 20 pasacables de goma Quiwi GM6A, diámetro interior 18 mm</td><td>1</td><td class="numero">$18.000,00</td><td class="numero">$18.000,00</td><td><a href="https://www.mercadolibre.com.ar/gm6a--pasacable-de-goma-dia-interno-18mm---pack-x-20/up/MLAU222935294" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 100 tornillos Fix 4 × 40 mm y 100 tarugos N.º 6 para canaletas</td><td>1</td><td class="numero">$6.840,00</td><td class="numero">$6.840,00</td><td><a href="https://www.mercadolibre.com.ar/tornillo-fix-4x40--tarugos-comun-sin-tope-n6--100-unidades/up/MLAU309305669" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 50 tarugos de 10 mm, tirafondos y arandelas para fijaciones</td><td>1</td><td class="numero">$30.800,00</td><td class="numero">$30.800,00</td><td><a href="https://www.mercadolibre.com.ar/tarugos-tirafondo-arandelas-10mm-14-x-2-pulgadas-x50-uni/up/MLAU168765625?pdp_filters=item_id%3AMLA659176884" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Bandeja adicional Vision Tech para rack de 19 pulgadas, 490 × 260 mm, carga máxima 10 kg</td><td>1</td><td class="numero">$22.383,00</td><td class="numero">$22.383,00</td><td><a href="https://www.mercadolibre.com.ar/bandeja-fija-rack-19-pulgadas-490x260mm-metalica-espesor-1mm-negro/p/MLA79701824?pdp_filters=item_id%3AMLA2292911457" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Pack de 100 precintos plásticos de 3,6 × 200 mm</td><td>1</td><td class="numero">$4.499,00</td><td class="numero">$4.499,00</td><td><a href="https://www.mercadolibre.com.ar/precinto-plastico-prensacable-36-x-200-mm-100-unidades/up/MLAU266670090?pdp_filters=item_id%3AMLA1620396816" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Sellador cortafuego Promaseal A, cartucho de 310 ml</td><td>1</td><td class="numero">$26.132,00</td><td class="numero">$26.132,00</td><td><a href="https://www.mercadolibre.com.ar/sellador-ignifugo-promaseal-a-310-ml-hidrofugo--durlock/up/MLAU214841488" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
+                    <tr><td>Caño PVC rígido Genrod de 40 mm, tira de 3 m para manguitos pasamuros</td><td>1</td><td class="numero">$6.999,00</td><td class="numero">$6.999,00</td><td><a href="https://www.mercadolibre.com.ar/cano-3mts-pvc-rigido-semipesado-sd-40mm-75kg-genrod/up/MLAU4047285466?pdp_filters=item_id%3AMLA1814253463" target="_blank" rel="noopener noreferrer">Ver publicación</a></td></tr>
                 </tbody>
-                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$7.378.615,33</td><td>ARS</td></tr></tfoot>
+                <tfoot><tr><th colspan="3">Total de materiales</th><td class="numero">$8.351.703,22</td><td>ARS</td></tr></tfoot>
             </table></div>
-            <p>Los nueve monitores se compran por separado. Los teclados y mouse están incluidos en las PC seleccionadas. El disco externo es independiente del SSD del equipo que comparte los archivos.</p>
+            <p>El cablecanal se compra en cinco packs de doce metros: seis tiras de dos metros por pack, sesenta metros en total. El precio de cada pack no corresponde a una sola tira. Los racks murales incluyen bandeja; la bandeja adicional se utiliza en el rack principal de 2 m.</p>
+            <p>Los precios comerciales de referencia se distinguen de la mano de obra estimada de la sección siguiente. Las cantidades y las características eléctricas deberán confirmarse con el relevamiento y la revisión del electricista.</p>
         </section>
         <section id="fuentes">
             <h2>10. Fuentes del presupuesto</h2>
-            <p>Publicaciones de Mercado Libre para cada componente. Los precios pueden cambiar por vendedor, disponibilidad y forma de pago.</p>
+            <p>Publicaciones de Mercado Libre para los componentes y materiales. Los enlaces abren en otra pestaña. Son referencias de precio y no una cotización cerrada del proyecto.</p>
             <ul>
                 <li>PC de oficina Athlon 3000G, 8 GB, SSD 240 GB, con teclado y mouse: <a href="https://www.mercadolibre.com.ar/pc-gaming-city-amd-athlon-3000g-8gb-ram-ssd-240gb-radeon-vega-3-teclado-y-mouse/p/MLA73042826?product_trigger_id=MLA73042828" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>PC de Diseño Ryzen 5 3400G, 8 GB, SSD 240 GB, gráficos integrados, teclado y mouse: <a href="https://www.mercadolibre.com.ar/pc-ryzen-5-completa-3400g-8-gb-240-gb-wi-fi-mouse-y-teclado-aconcawa-pc/p/MLA78236679" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
-                <li>Monitor Solarmax SX22F Full HD de 21,5 pulgadas: <a href="https://www.mercadolibre.com.ar/monitor-solarmax-sx22f2-fhd-75hz-hdmivga/up/MLAU5343459378" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Monitor Solarmax SX22F Full HD de 22 pulgadas: <a href="https://www.mercadolibre.com.ar/solarmax-sx22f-monitor-22-75hz-full-hd/p/MLA43961514?pdp_filters=item_id%3AMLA3876531186" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Router MikroTik hEX S E60iUGS (2025): <a href="https://www.mercadolibre.com.ar/mikrotik-router-hex-s-2025-e60iugs-1p-sfp-25g-5p-giga-poe/up/MLAU3474345551" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Switch central administrable TP-Link TL-SG108PE, 8 puertos Gigabit, 4 PoE: <a href="https://www.mercadolibre.com.ar/switch-tplink-tlsg108pe-smart-gigabit-8-puertos-4-poe/up/MLAU375770224" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Switch de planta TP-Link TL-SG108E, 8 puertos Gigabit administrables: <a href="https://www.mercadolibre.com.ar/switch-gigabit-tp-link-tl-sg108e-easy-smart/p/MLA2090124795?pdp_filters=item_id%3AMLA2135881509" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Access point TP-Link TL-WA801ND, Wi-Fi N300, con fuente e inyector pasivo: <a href="https://www.mercadolibre.com.ar/access-point-tl-wa801nd-tp-link-inalambrico-n-300mbps-v/up/MLAU5270522565" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
-                <li>Bobina UTP Cat5e Commscope de cobre, 305 metros: <a href="https://www.mercadolibre.com.ar/cable-utp-cat-5e-commscope-amp-netconnecta-rollo-305-metros-gris/p/MLA27970906" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Bobina UTP Cat5e Commscope de cobre, 305 metros: <a href="https://www.mercadolibre.com.ar/cable-de-red-utp-cat5e-amp-te-commscope-100-cobre/up/MLAU218108837?pdp_filters=item_id%3AMLA1144632578" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Patch cord Vention Cat6 de 1 metro: <a href="https://www.mercadolibre.com.ar/cable-de-red-vention-cat6-certificado-1-metro-premium-patch-cord-utp-rj45-ethernet-1000-mbps-250-mhz-cobre-pc-notebook-servidores-negro-ibebf/p/MLA28459512?pdp_filters=item_id%3AMLA1733505538" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Impresora multifunción HP DeskJet Ink Advantage 2875 Wi-Fi (usada): <a href="https://www.mercadolibre.com.ar/impresora-multifuncion-hp-deskjet-ink-advantage-2875-wifi/up/MLAU5822961590" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Disco externo Toshiba Canvio Basics USB 3.0 de 1 TB para backup: <a href="https://www.mercadolibre.com.ar/disco-externo-toshiba-canvio-basics-1tb-usb-30-portatil-hdtb510xk3aa-negro/p/MLA22636418" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
-                <li>Rack GLC Ecomural 12U con bandeja fija de 300 mm y tornillos: <a href="https://www.mercadolibre.com.ar/kit-de-rack-12u-glc-ecomural12u450-con-bandeja-fija-300mm/up/MLAU3783920636" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Patch panel Cat6 de 24 puertos con jacks: <a href="https://www.mercadolibre.com.ar/patchera-patch-panel-24-puertos-rj45-cat6-pkrone110-cjack/p/MLA2040255106" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Pack de 10 rosetas Prosoft RJ45 con jack Cat6 (20 tomas en total): <a href="https://www.mercadolibre.com.ar/prosoft-roseta-rj45-red-con-jack-cat6-pack-de-10-unidades-cables-cat-6/p/MLA38481926" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>UPS Hikvision DS-UPS1000-R de 1000 VA / 600 W, salida 230 V: <a href="https://www.mercadolibre.com.ar/ups-interactiva-hikvision-1000va-600w-ds-ups1000-r-negro/p/MLA79218598" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
-                <li>Canaleta Kalop 40 × 30 mm, tira de 2 metros (60 m en total): <a href="https://www.mercadolibre.com.ar/cable-canal-autoadhesivo-kalop-40x30-tira-x-2-mts-pvc/up/MLAU254747460" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de cablecanal Kalop 40 × 30 mm, 6 tiras de 2 m (12 m por pack; 60 m en total): <a href="https://www.mercadolibre.com.ar/cable-canal-kalop-autoadhesivo-30x40-12mtsen-tiras-x-2m/up/MLAU404183958" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Pack de 5 curvas Kalop para canaleta 40 × 30 mm (20 curvas en total): <a href="https://www.mercadolibre.com.ar/accesorios-para-cablecanal-curva-40x30-kalop-x5-unidades/up/MLAU3025568873" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Rack principal de pie GLC 45U, 19 pulgadas, 2 m de alto, 60 × 60 cm: <a href="https://www.mercadolibre.com.ar/rack-abierto-glc-45u-19-para-telecomunicaciones-y-servidores-800kg-negro/p/MLA49594141" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Rack mural tra-color 4U de 400 mm, con bandeja (P1 y P2): <a href="https://www.mercadolibre.com.ar/rack-mural-4u-400mm-profundidad-desarmado-bandeja-negro/p/MLA74708835" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Térmica bipolar BAW de 16 A, referencia para circuitos por planta: <a href="https://www.mercadolibre.com.ar/termica-baw-interruptor-bipolar-16-amp/up/MLAU364800359" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Disyuntor diferencial Tosunlux tipo A, 2 × 25 A, 30 mA, referencia: <a href="https://www.mercadolibre.com.ar/disyuntor-interruptor-diferencial-tipo-a-2x25a-30ma-tosunlux/p/MLA2095738838" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Cable unipolar de cobre de 2,5 mm², rollo de 50 m (fase, neutro y tierra): <a href="https://articulo.mercadolibre.com.ar/MLA-1128866156-cable-electrico-unipolar-25-mm-iram-2183-100-cobre-50-mts-_JM?searchVariation=174332452564" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Tomacorriente doble con tierra Jeluz Verona, caja y tapa para aplicar: <a href="https://www.mercadolibre.com.ar/llave-toma-corriente-doble-exterior-enchufe-aplicar-jeluz/p/MLA23204856" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Zapatilla Kalop de 6 tomas IRAM, cable de 1,5 m y limitador térmico: <a href="https://www.mercadolibre.com.ar/zapatilla-kalop-iram-6-tomas-15m-cable-limitador-termico-10a-blanca/p/MLA23435446" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 50 tornillos M6 y 50 tuercas jaula para rack: <a href="https://www.mercadolibre.com.ar/tornillo-rack--tuerca-jaula-m6--50-pares/up/MLAU3451246209" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Unión recta Kalop para cablecanal de 40 × 30 mm: <a href="https://www.mercadolibre.com.ar/acople-recto-union-cable-canal-40x30-kalop/up/MLAU3705787688?pdp_filters=item_id%3AMLA1624939233" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Derivación T Kalop para cablecanal de 40 × 30 mm: <a href="https://www.mercadolibre.com.ar/accesorio-cablecanal-40x30mm-derivacion-t-kalop-blanco/p/MLA2115959461?pdp_filters=item_id%3AMLA1644182351" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 10 tapas finales Kalop para cablecanal de 40 × 30 mm: <a href="https://www.mercadolibre.com.ar/accesorio-cablecanal-40x30mm-terminal-kalop-pack-x-10/up/MLAU3370828041?pdp_filters=item_id%3AMLA1516343685" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 20 pasacables de goma Quiwi GM6A, diámetro interior 18 mm: <a href="https://www.mercadolibre.com.ar/gm6a--pasacable-de-goma-dia-interno-18mm---pack-x-20/up/MLAU222935294" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 100 tornillos Fix 4 × 40 mm y 100 tarugos N.º 6 para canaletas: <a href="https://www.mercadolibre.com.ar/tornillo-fix-4x40--tarugos-comun-sin-tope-n6--100-unidades/up/MLAU309305669" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 50 tarugos de 10 mm, tirafondos y arandelas para fijaciones: <a href="https://www.mercadolibre.com.ar/tarugos-tirafondo-arandelas-10mm-14-x-2-pulgadas-x50-uni/up/MLAU168765625?pdp_filters=item_id%3AMLA659176884" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Bandeja adicional Vision Tech para rack de 19 pulgadas, 490 × 260 mm, carga máxima 10 kg: <a href="https://www.mercadolibre.com.ar/bandeja-fija-rack-19-pulgadas-490x260mm-metalica-espesor-1mm-negro/p/MLA79701824?pdp_filters=item_id%3AMLA2292911457" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Pack de 100 precintos plásticos de 3,6 × 200 mm: <a href="https://www.mercadolibre.com.ar/precinto-plastico-prensacable-36-x-200-mm-100-unidades/up/MLAU266670090?pdp_filters=item_id%3AMLA1620396816" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Sellador cortafuego Promaseal A, cartucho de 310 ml: <a href="https://www.mercadolibre.com.ar/sellador-ignifugo-promaseal-a-310-ml-hidrofugo--durlock/up/MLAU214841488" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
+                <li>Caño PVC rígido Genrod de 40 mm, tira de 3 m para manguitos pasamuros: <a href="https://www.mercadolibre.com.ar/cano-3mts-pvc-rigido-semipesado-sd-40mm-75kg-genrod/up/MLAU4047285466?pdp_filters=item_id%3AMLA1814253463" target="_blank" rel="noopener noreferrer">Ver publicación</a>.</li>
                 <li>Photoshop: <a href="https://www.adobe.com/ar/creativecloud/photography/compare-plans.html" target="_blank" rel="noopener noreferrer">Planes oficiales de Adobe</a>.</li>
                 <li>Office web: <a href="https://www.microsoft.com/es-ar/microsoft-365/business/microsoft-365-business-basic" target="_blank" rel="noopener noreferrer">Microsoft 365 Empresa Básico</a>.</li>
             </ul>
@@ -237,57 +299,59 @@
         <section id="mano-obra">
             <h2>11. Mano de obra y tiempo de instalación</h2>
             <h3>Personal y tareas</h3>
-            <p>Participarán <strong>dos técnicos de instalación de redes y un técnico especializado en configuración y seguridad</strong>. Los instaladores colocarán canaletas y cables, montarán el rack y los switches, conectarán las computadoras e identificarán los cables y puertos.</p>
-            <p>El especialista configurará el router, los switches y las VLAN compatibles, el equipo de archivos, los usuarios, los permisos y los backups. También realizará pruebas de conectividad, acceso a Internet, aislamiento de invitados y recuperación de archivos.</p>
+            <p>Participarán <strong>cuatro técnicos de instalación de redes, dos especialistas en configuración y seguridad y dos electricistas (ocho personas en total)</strong>. Los instaladores montarán los tres racks y el cablecanal, tenderán y terminarán el UTP, fijarán los dispositivos y comprobarán los enlaces. Las herramientas de trabajo serán aportadas por los técnicos.</p>
+            <p>Los dos especialistas se repartirán la configuración del router, los switches, las VLAN, las cuentas, los permisos, las carpetas compartidas y los backups. Verificarán la conectividad y el aislamiento de invitados, y realizarán una prueba de restauración.</p>
+            <p>Los dos electricistas revisarán el tablero y la puesta a tierra existentes, verificarán el dimensionamiento de los circuitos y realizarán las conexiones de las protecciones, los conductores y los tomacorrientes. Se prevé una jornada de ocho horas por electricista para una ampliación sobre infraestructura existente aprovechable; una instalación eléctrica nueva requiere otro relevamiento y presupuesto.</p>
             <div class="tabla"><table>
                 <thead><tr><th>Trabajo</th><th>Horas-persona</th><th>Precio por hora</th><th>Total</th></tr></thead>
                 <tbody>
-                    <tr><td>Instalación de red</td><td>48</td><td class="numero">$15.000</td><td class="numero">$720.000</td></tr>
-                    <tr><td>Configuración especializada</td><td>16</td><td class="numero">$25.000</td><td class="numero">$400.000</td></tr>
+                    <tr><td>Instalación de red: 4 técnicos</td><td>96</td><td class="numero">$30.000,00</td><td class="numero">$2.880.000,00</td></tr>
+                    <tr><td>Configuración especializada: 2 técnicos</td><td>32</td><td class="numero">$50.000,00</td><td class="numero">$1.600.000,00</td></tr>
+                    <tr><td>Revisión y ampliación eléctrica: 2 electricistas</td><td>16</td><td class="numero">$30.000,00</td><td class="numero">$480.000,00</td></tr>
                 </tbody>
-                <tfoot><tr><th>Total</th><td>64</td><td>—</td><td class="numero">$1.120.000</td></tr></tfoot>
+                <tfoot><tr><th>Total</th><td>144</td><td>-</td><td class="numero">$4.960.000,00</td></tr></tfoot>
             </table></div>
-            <p>Las 48 horas-persona de instalación equivalen a 2 técnicos × 3 jornadas × 8 horas. Las 16 horas especializadas equivalen a dos jornadas de ocho horas de un especialista. El plazo total estimado es de <strong>4 a 5 días hábiles</strong>, incluyendo pruebas y puesta en funcionamiento; algunas tareas pueden realizarse en paralelo.</p>
-            <p>Plan orientativo: días 1 a 3, montaje y cableado; día 4, configuración; día 5, pruebas, ajustes y entrega. Si parte de la configuración se adelanta, puede terminarse en cuatro días. Se coordinarán interrupciones con los sectores y sus turnos. Estas tarifas son estimaciones de planificación, no cotizaciones verificadas.</p>
+            <p>Las 96 horas-persona de instalación equivalen a cuatro técnicos trabajando tres jornadas de ocho horas cada uno. Los dos especialistas trabajarán dos jornadas de ocho horas cada uno (32 horas-persona) y los dos electricistas una jornada de ocho horas cada uno (16 horas-persona). Se mantienen las jornadas previstas por persona y se duplica la tarifa por hora de todos los roles. El equipo ampliado se distribuirá entre las plantas, la configuración y las verificaciones, con tareas en paralelo. El plazo estimado es de <strong>4 a 5 días hábiles</strong>, incluyendo pruebas y puesta en funcionamiento. Las tarifas son estimaciones de planificación, no cotizaciones verificadas.</p>
         </section>
         <section id="total">
             <h2>12. Presupuesto total del proyecto</h2>
             <div class="tabla"><table>
                 <thead><tr><th>Concepto</th><th>Importe en ARS</th></tr></thead>
                 <tbody>
-                    <tr><td>Materiales</td><td class="numero">$7.378.615,33</td></tr>
+                    <tr><td>Materiales, tres racks y accesorios de instalación</td><td class="numero">$8.351.703,22</td></tr>
                     <tr><td>Software del primer año, con reserva impositiva</td><td class="numero">$4.038.948,00</td></tr>
-                    <tr><td>Mano de obra</td><td class="numero">$1.120.000,00</td></tr>
-                    <tr><td>Subtotal</td><td class="numero">$12.537.563,33</td></tr>
-                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$1.253.756,33</td></tr>
+                    <tr><td>Mano de obra: 4 técnicos de redes, 2 especialistas y 2 electricistas</td><td class="numero">$4.960.000,00</td></tr>
+                    <tr><td>Subtotal</td><td class="numero">$17.350.651,22</td></tr>
+                    <tr><td>Imprevistos: 10 % del subtotal</td><td class="numero">$1.735.065,12</td></tr>
                 </tbody>
-                <tfoot><tr><th>Total general</th><td class="numero"><strong>$13.791.319,66</strong></td></tr></tfoot>
+                <tfoot><tr><th>Total general</th><td class="numero"><strong>$19.085.716,34</strong></td></tr></tfoot>
             </table></div>
-            <p>El total incluye los materiales, la instalación, doce meses de Photoshop para ocho usuarios y Office web para tres usuarios, la reserva impositiva del software y un 10 % de imprevistos. Queda $1.208.680,34 por debajo del límite de $15.000.000.</p>
-            <p>Es una estimación orientativa: se requiere una cotización actualizada para comprar. No incluye el abono de Internet ni las renovaciones de software a partir del segundo año. La copia externa utilizará el almacenamiento de OneDrive incluido en Microsoft 365 Empresa Básico.</p>
+            <p>El total incluye los nueve puestos, un rack principal de 2 m y dos racks murales, los materiales autorizados de instalación, la mano de obra de ocho personas, doce meses de Photoshop para ocho usuarios y Office web para tres, la reserva impositiva del software y un 10 % de imprevistos.</p>
+            <p>Es una estimación orientativa para una ampliación sobre infraestructura eléctrica existente. Se requiere una cotización actualizada para comprar y confirmar los envíos. No incluye el abono de Internet ni renovaciones del software desde el segundo año. OneDrive, incluido en Microsoft 365 Empresa Básico, se utiliza para el backup externo.</p>
         </section>
         <section id="backup">
             <h2>13. Sistema de backup</h2>
             <p>Un backup es una copia independiente que permite recuperar archivos borrados, dañados o afectados por un incidente.</p>
             <h3>Almacenamiento principal</h3>
-            <p>La PC compartida de PB alojará los archivos compartidos en su SSD de 240 GB, con cuentas y permisos individuales. Se mantendrá encendida hasta finalizar los backups de las 21:30 y durante las tareas programadas del domingo. Su capacidad se controlará periódicamente.</p>
+            <p>La PC compartida de PB alojará los archivos compartidos en su SSD de 240 GB, con cuentas y permisos individuales. El espacio disponible para documentos se repartirá con Windows y los programas. Se mantendrá encendida, sin suspensión, hasta finalizar los backups de las 21:30 y durante las tareas programadas del domingo. Su capacidad se controlará periódicamente.</p>
             <h3>Estrategia 3-2-1</h3>
             <ul>
                 <li><strong>Tres copias:</strong> originales en la PC de archivos, backup en el disco externo Toshiba de 1 TB y backup cifrado en OneDrive.</li>
                 <li><strong>Dos tipos de almacenamiento:</strong> SSD interno y disco duro USB, más almacenamiento en la nube.</li>
                 <li><strong>Una copia fuera del edificio:</strong> OneDrive, dentro del espacio de una cuenta autorizada de Administración.</li>
             </ul>
-            <p>Duplicati realizará copias con versiones y cifrado. El destino externo recibirá archivos de backup independientes, no una simple sincronización de los originales. Se separarán las credenciales y se activará la autenticación multifactor. El disco USB se desconectará después de comprobar la copia y se volverá a conectar antes de la siguiente tarea.</p>
+            <p>Duplicati realizará dos tareas independientes con versiones y cifrado: una al disco USB y otra a OneDrive. Se ejecutará como servicio de Windows para continuar aunque se cierre la sesión del empleado. El destino externo recibirá archivos de backup independientes, no una simple sincronización de los originales. Se separarán las credenciales y se activará la autenticación multifactor. Al comenzar cada jornada, un responsable conectará el disco USB, ejecutará y comprobará la copia y luego lo desconectará.</p>
             <div class="tabla"><table>
                 <thead><tr><th>Frecuencia</th><th>Acción</th></tr></thead>
                 <tbody>
-                    <tr><td>Diariamente a las 21:30</td><td>Copia incremental automática al USB conectado y a OneDrive.</td></tr>
-                    <tr><td>Todos los domingos</td><td>Backup completo o sintético, según el programa y la capacidad disponible.</td></tr>
+                    <tr><td>Al inicio de cada jornada laboral</td><td>Copia al disco USB de los archivos de la jornada anterior, comprobación y desconexión del disco.</td></tr>
+                    <tr><td>Diariamente a las 21:30</td><td>Copia incremental automática a OneDrive.</td></tr>
+                    <tr><td>Todos los domingos</td><td>Verificación de las copias en OneDrive y mantenimiento de las versiones conservadas.</td></tr>
                     <tr><td>Cada mes</td><td>Prueba de recuperación de una muestra de archivos.</td></tr>
                     <tr><td>Cada tres meses</td><td>Simulación de restauración y registro del tiempo necesario.</td></tr>
                 </tbody>
             </table></div>
-            <p>Se revisarán los registros de las tareas y se conservarán versiones según el espacio disponible. Las copias externas estarán cifradas y protegidas contra cambios no autorizados; la clave de recuperación se guardará en un lugar seguro. Las pruebas comprobarán que los archivos puedan recuperarse.</p>
+            <p>La primera copia de cada destino será completa; las siguientes guardarán los bloques nuevos o modificados. Cada punto de restauración permitirá recuperar el conjunto de archivos de esa fecha. Se revisarán los registros de las tareas y se conservarán versiones según el espacio disponible. Las copias externas estarán cifradas y protegidas con permisos de acceso; el disco USB desconectado conservará una copia fuera del alcance de la PC. La clave de cifrado y una exportación de la configuración se guardarán de forma segura fuera de esa computadora. Las pruebas comprobarán que los archivos puedan recuperarse.</p>
         </section>
         <section id="seguridad">
             <h2>14. Seguridad informática</h2>
@@ -297,7 +361,7 @@
                 <li><strong>Cuentas individuales:</strong> cada empleado tendrá su propio usuario y contraseña; no se compartirán credenciales y se usarán cuentas sin privilegios de administrador para el trabajo diario.</li>
                 <li><strong>Permisos:</strong> cada persona accederá únicamente a las carpetas necesarias; solo los responsables podrán modificar la configuración de red y backups.</li>
                 <li><strong>Actualizaciones:</strong> sistemas operativos, programas y equipos de red se mantendrán actualizados, coordinando reinicios fuera de los turnos.</li>
-                <li><strong>Wi-Fi para invitados:</strong> tendrá una red separada, con acceso únicamente a Internet y sin acceso a PC, impresora, equipo de archivos o administración de equipos.</li>
+                <li><strong>Wi-Fi para invitados:</strong> utilizará una VLAN separada. El firewall del router permitirá su salida a Internet y bloqueará las conexiones hacia las subredes de los puestos, la impresora y el equipo de archivos.</li>
             </ul>
             <h3>Segmentación mediante VLAN</h3>
             <p>Una VLAN es una red local virtual: permite separar grupos de dispositivos sobre infraestructura física compartida. Cada VLAN tendrá una subred IP diferente. El router será su puerta de enlace y aplicará las reglas que autorizan o impiden la comunicación. La segmentación organiza el tráfico y limita el acceso entre sectores; una VLAN sola no reemplaza al firewall.</p>
@@ -312,13 +376,13 @@
                 </tbody>
             </table></div>
             <p>Se propone usar la dirección .1 de cada subred como puerta de enlace, asignación DHCP para puestos y móviles y direcciones reservadas para equipo de archivos, switches, AP e impresora. La dirección terminada en .0 identifica la red y no se asigna a una computadora. La impresora estará en Administración con acceso autorizado desde los sectores que lo necesiten.</p>
-            <p>Se bloqueará por defecto la comunicación entre sectores y se permitirán servicios concretos, como acceso a carpetas del equipo de archivos e impresión. Solo una cuenta y un equipo autorizados podrán administrar los dispositivos; el equipo de archivos estará en la VLAN 10 y la gestión de switches en la VLAN 40. Los permisos del equipo de archivos seguirán controlando el acceso a los archivos.</p>
+            <p>El router bloqueará por defecto el tráfico entre subredes y permitirá servicios concretos, como acceso a carpetas del equipo de archivos e impresión. Su administración se limitará a un equipo autorizado en la VLAN 40. Se cambiarán las contraseñas de fábrica de switches y AP y solo los responsables conservarán esas credenciales. El equipo de archivos estará en la VLAN 10; sus permisos seguirán controlando el acceso a los documentos.</p>
             <p>Los AP TL-WA801ND usarán Multi-SSID con VLAN para separar invitados. Se comprobarán la versión de hardware y el soporte de etiquetado del modelo entregado antes de comprar.</p>
         </section>
         <section id="conclusion">
             <h2>15. Conclusión</h2>
             <p>La estrella extendida conecta las tres plantas y permite ampliar la red. Nueve computadoras cubren las necesidades de catorce empleados: una compartida en planta baja, cinco en Diseño utilizadas en dos turnos y tres en Administración. Diseño utilizará Ryzen 5 con gráficos integrados y 8 GB de RAM para portadas sencillas. Las carpetas compartidas, los permisos, el firewall y las VLAN organizarán el acceso a la información; las copias locales y externas reducirán el riesgo de pérdida de archivos.</p>
-            <p>El presupuesto de $13.791.319,66 incluye materiales, mano de obra, el primer año de Photoshop y Office web, una reserva impositiva e imprevistos, dentro del límite de quince millones de pesos.</p>
+            <p>El presupuesto de $19.085.716,34 incluye los tres racks, los materiales de instalación, la mano de obra de redes y electricista, el primer año de Photoshop y Office web, una reserva impositiva e imprevistos.</p>
         </section>
     </main>
     <footer>
